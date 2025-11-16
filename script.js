@@ -571,10 +571,14 @@ document.addEventListener('DOMContentLoaded', function() {
         cadastroForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            console.log('📝 Formulário submetido - Iniciando processamento...');
+            
             // Coletar dados
             const nome = nomeInput?.value.trim();
             const email = emailInput?.value.trim();
             const cargo = cargoSelect?.value;
+            
+            console.log('📋 Dados coletados:', { nome, email, cargo });
             
             // Validação final
             let hasError = false;
@@ -615,17 +619,34 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Integração com Supabase
             try {
+                console.log('🔍 Verificando se Supabase está disponível...');
+                
                 // Verificar se Supabase está carregado
-                if (typeof window.supabase === 'undefined') {
-                    throw new Error('Biblioteca Supabase não carregada. Verifique a conexão com a internet.');
+                // O CDN expõe como 'supabase' (sem window) ou pode estar em window.supabase
+                let supabaseClient;
+                if (typeof supabase !== 'undefined' && supabase.createClient) {
+                    console.log('✅ Supabase encontrado como variável global "supabase"');
+                    supabaseClient = supabase;
+                } else if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
+                    console.log('✅ Supabase encontrado como "window.supabase"');
+                    supabaseClient = window.supabase;
+                } else {
+                    console.error('❌ Supabase não encontrado. Verificando objetos globais:', {
+                        'supabase': typeof supabase,
+                        'window.supabase': typeof window.supabase,
+                        'window.supabaseClient': typeof window.supabaseClient,
+                        'window': Object.keys(window).filter(k => k.toLowerCase().includes('supabase'))
+                    });
+                    throw new Error('Biblioteca Supabase não carregada. Verifique a conexão com a internet e recarregue a página.');
                 }
                 
                 // Configuração do Supabase
                 const supabaseUrl = 'https://riqslkibmvyalnwrapnj.supabase.co';
                 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcXNsa2libXZ5YWxud3JhcG5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyOTk4ODEsImV4cCI6MjA3ODg3NTg4MX0.9Yts0slRMI-FH8dthInuqKDTfEggJNsSyM_ol179rkI';
                 
+                console.log('🔧 Criando cliente Supabase...');
                 // Criar cliente Supabase
-                const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+                const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
                 
                 // Preparar dados para inserção
                 const dados = {
@@ -634,6 +655,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     cargo: cargo
                 };
                 
+                console.log('📤 Enviando dados para Supabase:', dados);
+                
                 // Inserir dados no Supabase
                 const { data, error } = await supabase
                     .from('cadastros')
@@ -641,15 +664,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     .select();
                 
                 if (error) {
+                    console.error('❌ Erro do Supabase:', {
+                        message: error.message,
+                        code: error.code,
+                        details: error.details,
+                        hint: error.hint
+                    });
+                    
                     // Tratar erros específicos
                     if (error.code === '23505') { // Violação de constraint única (email duplicado)
                         showError(emailError, 'Este e-mail já está cadastrado');
                         emailInput.style.borderColor = '#ff4444';
                         emailInput.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
                         showToast('Este e-mail já está cadastrado. Use outro e-mail.', 'error');
+                    } else if (error.code === '42P01') { // Tabela não existe
+                        console.error('❌ Tabela "cadastros" não encontrada. Execute o script SQL no Supabase.');
+                        showToast('Erro de configuração. Entre em contato com o suporte.', 'error');
+                    } else if (error.code === '42501') { // Permissão negada (RLS)
+                        console.error('❌ Permissão negada. Verifique as políticas RLS no Supabase.');
+                        showToast('Erro de permissão. Entre em contato com o suporte.', 'error');
                     } else {
-                        console.error('Erro ao enviar formulário:', error);
-                        showToast('Erro ao enviar formulário. Tente novamente.', 'error');
+                        console.error('❌ Erro desconhecido:', error);
+                        showToast(`Erro ao enviar: ${error.message || 'Tente novamente'}`, 'error');
                     }
                     
                     // Esconder loading
@@ -663,16 +699,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Sucesso - dados salvos
                 console.log('✅ Cadastro realizado com sucesso:', data);
+                console.log('✅ Dados confirmados no Supabase. Redirecionando...');
                 showToast('Sua vaga na aula foi registrada! Redirecionando...', 'success');
                 
-                // Redirecionar após 1 segundo
+                // Redirecionar após 1 segundo (APENAS se chegou até aqui com sucesso)
                 setTimeout(() => {
+                    console.log('🔄 Redirecionando para thankyou.html...');
                     window.location.href = 'thankyou.html';
                 }, 1000);
                 
             } catch (error) {
-                console.error('Erro ao enviar formulário:', error);
-                showToast('Erro ao enviar formulário. Verifique sua conexão e tente novamente.', 'error');
+                console.error('❌ ERRO CAPTURADO ao enviar formulário:', error);
+                console.error('❌ Tipo do erro:', error.constructor.name);
+                console.error('❌ Mensagem:', error.message);
+                console.error('❌ Stack trace:', error.stack);
+                console.error('❌ NÃO redirecionando - erro impediu o salvamento');
+                
+                showToast(`Erro: ${error.message || 'Verifique sua conexão e tente novamente'}`, 'error');
                 
                 // Esconder loading
                 if (submitBtn && btnText && btnLoader) {
@@ -680,6 +723,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     btnText.style.display = 'inline';
                     btnLoader.style.display = 'none';
                 }
+                
+                // NÃO redirecionar em caso de erro
+                return;
             }
         });
     }

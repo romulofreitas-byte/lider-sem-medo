@@ -913,7 +913,36 @@
     </div>
 
     <!-- Supabase JS Client via CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Verificar se Supabase carregou corretamente
+        (function checkSupabase() {
+            console.log('🔍 Verificando carregamento do Supabase...');
+            console.log('📦 typeof supabase:', typeof supabase);
+            console.log('📦 typeof window.supabase:', typeof window.supabase);
+            
+            if (typeof supabase !== 'undefined' && supabase.createClient) {
+                console.log('✅ Supabase carregado como variável global "supabase"');
+                window.supabaseLoaded = true;
+            } else if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
+                console.log('✅ Supabase carregado como "window.supabase"');
+                window.supabaseLoaded = true;
+            } else {
+                console.warn('⚠️ Supabase não encontrado após carregamento inicial. Tentando fallback...');
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/@supabase/supabase-js@2';
+                script.onload = function() {
+                    console.log('✅ Supabase carregado via fallback (unpkg)');
+                    window.supabaseLoaded = true;
+                };
+                script.onerror = function() {
+                    console.error('❌ Erro ao carregar Supabase via fallback');
+                    window.supabaseLoaded = false;
+                };
+                document.head.appendChild(script);
+            }
+        })();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
