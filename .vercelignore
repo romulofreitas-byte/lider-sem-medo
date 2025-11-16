@@ -1,0 +1,13 @@
+# Arquivos de servidor local (não necessários no Vercel)
+server.js
+server-thankyou.js
+
+# Arquivos de desenvolvimento
+node_modules/
+.env
+.env.local
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+

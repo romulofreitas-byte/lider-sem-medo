@@ -1,0 +1,16 @@
+{
+  "name": "lider-sem-medo",
+  "version": "1.0.0",
+  "description": "Site de landing page para a aula Líder Sem Medo",
+  "author": "2BX ASSESSORIA EMPRESARIAL LTDA - ME",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "dev:thankyou": "node server-thankyou.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
+

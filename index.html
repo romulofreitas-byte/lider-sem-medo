@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aula direta e profunda para destravar sua liderança e fazer seu time confiar e te seguir de verdade.">
+    <title>Por que sua equipe não te respeita — e como mudar isso hoje | Líder Sem Medo</title>
+    <link rel="icon" type="image/png" href="public/Logo Líder Sem Medo Preto.png">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        /* Consent Mode default (negado até aceitar no banner) */
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied' });
+    </script>
+    <script>
+        // GARANTIR VISIBILIDADE IMEDIATA DA FAIXA DE LOOPING
+        // Executar assim que o DOM estiver disponível
+        (function initRollingBanner() {
+            function showRollingBanner() {
+                const rollingBanner = document.getElementById('rollingBanner');
+                if (rollingBanner) {
+                    rollingBanner.style.cssText = 'display:block!important;visibility:visible!important;opacity:1!important;transform:translateY(0)!important;max-height:none!important;';
+                    const content = rollingBanner.querySelector('.rolling-banner-content');
+                    if (content) {
+                        content.style.cssText = 'display:flex!important;visibility:visible!important;opacity:1!important;animation:rollBanner 30s linear infinite!important;';
+                    }
+                }
+            }
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', showRollingBanner);
+            } else {
+                showRollingBanner();
+            }
+        })();
+    </script>
+</head>
+<body>
+    
+
+    <!-- Top Header Badge - Tech Redesign -->
+    <div class="top-header">
+        <!-- Grid Pattern Background -->
+        <div class="header-grid-pattern"></div>
+        <!-- Scan Line Effect -->
+        <div class="header-scan-line"></div>
+        
+        <div class="container">
+            <div class="header-content">
+                <!-- Left Section -->
+                <div class="header-left">
+                    <!-- Status Badge -->
+                    <div class="header-status-badge">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Aula ao vivo</span>
+                    </div>
+                    
+                    <!-- Vertical Separator -->
+                    <div class="header-separator"></div>
+                    
+                    <!-- Brand Name with Icon -->
+                    <div class="header-brand">
+                        <svg class="header-icon-tech" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="header-name">Líder Sem Medo</span>
+                    </div>
+                </div>
+                
+                <!-- Right Section -->
+                <div class="header-right">
+                    <!-- Date with Icon -->
+                    <div class="header-date-wrapper">
+                        <svg class="header-icon-tech" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M8 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span class="header-date">02 Dez 2025</span>
+                        <span class="header-time">12:15</span>
+                    </div>
+                    
+                    <!-- Vertical Separator -->
+                    <div class="header-separator"></div>
+                    
+                    <!-- Data Stream Indicator -->
+                    <div class="header-data-indicator">
+                        <div class="data-stream-dot"></div>
+                        <div class="data-stream-dot"></div>
+                        <div class="data-stream-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Border Glow -->
+        <div class="header-border-glow"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Coluna Esquerda -->
+                <div class="hero-content">
+                    <div class="hero-badge-credibility" data-animate="fade-up">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>+ 100 líderes já transformaram seus times. Últimas vagas disponíveis.</span>
+                    </div>
+                    <h1 class="hero-title" data-animate="fade-up" data-delay="50">
+                        <span class="hero-title-line1">Por que sua equipe não te respeita</span>
+                        <span class="hero-title-line2">— e como mudar isso hoje</span>
+                    </h1>
+                    <p class="hero-subtitle" data-animate="fade-up" data-delay="100">Aula prática para destravar sua liderança e fazer seu time confiar e te seguir de verdade. Saia da aula com um plano de ação concreto para aplicar no mesmo dia e ver resultados reais no seu time.</p>
+                    
+                    <div class="hero-cta-section" data-animate="fade-up" data-delay="200">
+                        <button class="btn-primary btn-primary-hero btn-shimmer btn-magnetic" id="ctaHero">
+                            <span class="btn-content">
+                                <span class="btn-text">Garantir minha vaga gratuita</span>
+                                <span class="btn-glow"></span>
+                            </span>
+                        </button>
+                        <div class="hero-urgency">
+                            <div class="online-counter">
+                                <span class="online-dot"></span>
+                                <span id="onlineCount">128</span> pessoas online agora
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-info">
+                                    <span class="progress-label">Vagas preenchidas</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-unfilled"></div>
+                                    <div class="progress-bar-fill" id="progressBar"></div>
+                                    <span class="progress-percentage">38%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coluna Direita - Foto Grande da Brendha -->
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <img src="public/brendhathiago.jpg" alt="Brendha Boaventura e Thiago Diniz - Especialistas em Liderança" class="hero-main-image" decoding="async" fetchpriority="high">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAIXA DE FRASES ROLANDO - DENTRO DO HERO - NUNCA MODIFICAR - DEVE SEMPRE APARECER -->
+        <div class="rolling-banner" id="rollingBanner" style="display:block!important;visibility:visible!important;opacity:1!important;transform:translateY(0)!important;max-height:none!important;height:auto!important;position:relative!important;z-index:5!important;">
+            <div class="rolling-banner-content" style="display:flex!important;visibility:visible!important;opacity:1!important;animation:rollBanner 30s linear infinite!important;">
+                <div class="rolling-phrase">Liderança Real</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Respeito Verdadeiro</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Time Engajado</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Resultados Comprovados</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Transformação Real</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Autoridade Natural</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Confiança Genuína</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Liderança Real</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Respeito Verdadeiro</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Time Engajado</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Resultados Comprovados</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Transformação Real</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Autoridade Natural</div>
+                <div class="rolling-separator">•</div>
+                <div class="rolling-phrase">Confiança Genuína</div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- SEÇÃO VÍDEO DE APRESENTAÇÃO PREMIUM -->
+    <section class="video-apresentacao">
+        <div class="container">
+            <!-- Header Premium com Badge de Autoridade -->
+            <div class="video-header" data-animate="fade-up">
+                <div class="video-authority-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>+100 líderes transformados</span>
+                </div>
+                <h2 class="video-title">Eles não te respeitam… e você sabe disso.</h2>
+                <p class="video-subtitle">Aula ao vivo • Terça, 2 de dezembro, 12h15 • 90 min</p>
+            </div>
+
+            <!-- Cards de Dores (antes do vídeo) -->
+            <div class="video-pain-cards" data-animate="fade-up" data-delay="50">
+                <h3 class="pain-section-title">As Dores que Mais Atingem Líderes</h3>
+                <div class="pain-cards-grid">
+                    <div class="pain-card pain-card-magnetic">
+                        <div class="pain-icon-wrapper">
+                            <svg class="pain-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="pain-pulse"></div>
+                        </div>
+                        <h4 class="pain-title">Time não te respeita</h4>
+                        <p class="pain-description">Você lidera, mas ninguém segue suas orientações com confiança real</p>
+                        <div class="pain-indicator"></div>
+                    </div>
+                    <div class="pain-card pain-card-magnetic">
+                        <div class="pain-icon-wrapper">
+                            <svg class="pain-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="pain-pulse"></div>
+                        </div>
+                        <h4 class="pain-title">Falta de engajamento</h4>
+                        <p class="pain-description">Seu time ouve, mas não age com o comprometimento que você espera</p>
+                        <div class="pain-indicator"></div>
+                    </div>
+                    <div class="pain-card pain-card-magnetic">
+                        <div class="pain-icon-wrapper">
+                            <svg class="pain-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="pain-pulse"></div>
+                        </div>
+                        <h4 class="pain-title">Conflitos constantes</h4>
+                        <p class="pain-description">Desentendimentos e falta de alinhamento minam a produtividade do time</p>
+                        <div class="pain-indicator"></div>
+                    </div>
+                    <div class="pain-card pain-card-magnetic">
+                        <div class="pain-icon-wrapper">
+                            <svg class="pain-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="pain-pulse"></div>
+                        </div>
+                        <h4 class="pain-title">Metas não alcançadas</h4>
+                        <p class="pain-description">Cobra resultados, mas o time não entrega o que você precisa</p>
+                        <div class="pain-indicator"></div>
+                    </div>
+                    <!-- Vídeo inserido como item de grid após a primeira linha -->
+                    <div class="video-grid-item" data-animate="fade-up" data-delay="150">
+                        <div class="video-wrapper-tech">
+                            <div class="video-container-tech">
+                                <!-- Overlay elegante sutil -->
+                                <div class="video-tech-hologram"></div>
+                                
+                                <!-- Frame do vídeo elegante -->
+                                <div class="video-tech-frame">
+                                    <div class="video-tech-glow"></div>
+                                    <div class="video-embed-tech">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/VIDEO_ID"
+                                            title="Vídeo: Por que sua equipe não te respeita"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen
+                                            loading="lazy">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Transformação -->
+            <div class="video-transformation-cards" data-animate="fade-up" data-delay="100">
+                <h3 class="transformation-section-title">A Transformação Real que Você Vai Conquistar</h3>
+                <div class="transformation-cards-grid">
+                    <div class="transformation-card transformation-card-magnetic">
+                        <div class="transformation-icon-wrapper">
+                            <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="transformation-shimmer"></div>
+                        </div>
+                        <div class="transformation-metric" data-count="92">0</div>
+                        <div class="transformation-metric-unit">%</div>
+                        <h4 class="transformation-title">Taxa de Satisfação</h4>
+                        <p class="transformation-description">Líderes que aplicaram o método recomendam e viram resultados reais</p>
+                    </div>
+                    <div class="transformation-card transformation-card-magnetic">
+                        <div class="transformation-icon-wrapper">
+                            <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="transformation-shimmer"></div>
+                        </div>
+                        <div class="transformation-metric" data-count="85">0</div>
+                        <div class="transformation-metric-unit">%</div>
+                        <h4 class="transformation-title">Aumento na Produtividade</h4>
+                        <p class="transformation-description">Times mais engajados entregam resultados exponenciais</p>
+                    </div>
+                    <div class="transformation-card transformation-card-magnetic">
+                        <div class="transformation-icon-wrapper">
+                            <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="transformation-shimmer"></div>
+                        </div>
+                    <div class="transformation-metric" data-count="100">0</div>
+                        <div class="transformation-metric-unit">+</div>
+                        <h4 class="transformation-title">Líderes Transformados</h4>
+                        <p class="transformation-description">Mudaram completamente sua forma de liderar e ver resultados</p>
+                    </div>
+                    <div class="transformation-card transformation-card-magnetic">
+                        <div class="transformation-icon-wrapper">
+                            <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="transformation-shimmer"></div>
+                        </div>
+                        <div class="transformation-metric" data-count="15">0</div>
+                        <div class="transformation-metric-unit">+ anos</div>
+                        <h4 class="transformation-title">Anos de Experiência</h4>
+                        <p class="transformation-description">Combinação de expertise prática em liderança e gestão de times</p>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Seção de Autoridade (após o vídeo) -->
+            <!-- (Seção de Autoridade removida a pedido) -->
+
+            <!-- (Depoimentos Rápidos de Autoridade removidos a pedido) -->
+        </div>
+    </section>
+
+    <!-- SEÇÃO GANHOS (SUBSTITUI OS BULLETS) -->
+    <section class="ganhos-section" aria-labelledby="ganhos-title">
+        <div class="container">
+            <div class="ganhos-header" data-animate="fade-up">
+                <h2 id="ganhos-title">Respeito sem medo: ganhos reais para sua liderança</h2>
+                <p class="ganhos-subtitle">O que muda quando sua autoridade é genuína</p>
+            </div>
+            <div class="ganhos-grid" data-animate="fade-up" data-delay="50">
+                <div class="ganho-card card-primary" data-tilt data-tilt-reverse>
+                    <div class="ganho-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="ganho-title">Menos conflitos</h3>
+                    <p class="ganho-desc">Ambiente mais leve e decisões fluem sem atritos.</p>
+                </div>
+                <div class="ganho-card card-primary" data-tilt data-tilt-reverse>
+                    <div class="ganho-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="ganho-title">Comunicação objetiva</h3>
+                    <p class="ganho-desc">Clareza no que importa, menos retrabalho.</p>
+                </div>
+                <div class="ganho-card card-primary" data-tilt data-tilt-reverse>
+                    <div class="ganho-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="ganho-title">Autonomia do time</h3>
+                    <p class="ganho-desc">Equipe responsável que decide e entrega.</p>
+                </div>
+                <div class="ganho-card card-primary" data-tilt data-tilt-reverse>
+                    <div class="ganho-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="ganho-title">Previsibilidade de resultados</h3>
+                    <p class="ganho-desc">Rotina estável e metas batidas com consistência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO RESULTADOS/TRANSFORMAÇÕES -->
+    <!-- (Seção Resultados removida a pedido) -->
+
+    <!-- SEÇÃO INTERATIVA - O SINTOMA -->
+    <!-- (Seção Sintoma removida a pedido) -->
+
+    <!-- SEÇÃO SOBRE A AULA -->
+    <section class="sobre-aula sobre-aula-premium">
+        <div class="container">
+            <div class="sobre-aula-bento">
+                <div class="sobre-aula-col about">
+                    <div class="sobre-aula-kicker" data-animate="fade-up">
+                        <span class="kicker-dot"></span>
+                        High Performance Leadership
+                    </div>
+                    <h2 class="sobre-aula-title" data-animate="fade-up" data-delay="50">Uma aula para quem já cansou de tentar liderar sozinho</h2>
+                    <p class="sobre-aula-intro" data-animate="fade-up" data-delay="100">Aula ao vivo, prática, em 90 minutos. Zero teoria vazia.</p>
+                    
+                    <div class="aula-badges" data-animate="fade-up" data-delay="150">
+                        <div class="aula-badge">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Método aplicado em times reais
+                        </div>
+                        <div class="aula-badge">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            90 minutos ao vivo
+                        </div>
+                    </div>
+
+                    <div class="aula-feature-list" data-animate="fade-up" data-delay="200">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Respeito sem medo</strong>
+                                <span>Como virar a chave da autoridade genuína</span>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>3 erros fatais</strong>
+                                <span>Comportamentos que destroem sua liderança — e o antidoto</span>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Plano de ação imediato</strong>
+                                <span>O passo a passo para aplicar com seu time no mesmo dia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aula-cta" data-animate="fade-up" data-delay="250">
+                        <button class="btn-primary btn-magnetic" id="ctaAula">
+                            <span class="btn-content">
+                                <span class="btn-text">Quero garantir minha vaga</span>
+                                <span class="btn-glow"></span>
+                            </span>
+                        </button>
+                        <span class="cta-note">Vagas limitadas</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PROVAS REAIS (SUBSTITUI DEPOIMENTOS) -->
+    <section class="evidencias-section" aria-labelledby="evidencias-title">
+        <div class="container">
+            <header class="evidencias-header" data-animate="fade-up">
+                <div class="section-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 id="evidencias-title" class="evidencias-title">Provas reais de transformação</h2>
+                <p class="evidencias-subtitle">Casos objetivos, com contexto, resultado e quem assinou embaixo</p>
+            </header>
+
+            <div class="transformation-cards-grid evidencias-grid">
+                <!-- Card 1 (mantém estrutura/efeitos dos transformation-cards) -->
+                <article class="transformation-card transformation-card-magnetic evid-card" data-animate="fade-up" data-delay="50">
+                    <div class="transformation-icon-wrapper">
+                        <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="transformation-shimmer"></div>
+                    </div>
+                    <div class="evid-stars" aria-hidden="true">★★★★★</div>
+                    <p class="evid-quote">"Ritual de 20 minutos e feedback direto. Menos ruído, mais entrega."</p>
+                    <div class="evid-signature">
+                        <div class="evid-avatar avatar-glass">RC</div>
+                        <div>
+                            <div class="evid-name">Roberto Costa</div>
+                            <div class="evid-role">Diretor Comercial</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="transformation-card transformation-card-magnetic evid-card" data-animate="fade-up" data-delay="100">
+                    <div class="transformation-icon-wrapper">
+                        <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="transformation-shimmer"></div>
+                    </div>
+                    <div class="evid-stars" aria-hidden="true">★★★★★</div>
+                    <p class="evid-quote">"Estrutura de conversas difíceis virou padrão. Engajamento subiu de verdade."</p>
+                    <div class="evid-signature">
+                        <div class="evid-avatar avatar-glass">MS</div>
+                        <div>
+                            <div class="evid-name">Mariana Silva</div>
+                            <div class="evid-role">Gerente de Operações</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="transformation-card transformation-card-magnetic evid-card" data-animate="fade-up" data-delay="150">
+                    <div class="transformation-icon-wrapper">
+                        <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="transformation-shimmer"></div>
+                    </div>
+                    <div class="evid-stars" aria-hidden="true">★★★★★</div>
+                    <p class="evid-quote">"Conflitos caíram. Acordos claros e responsabilidade sem desgaste."</p>
+                    <div class="evid-signature">
+                        <div class="evid-avatar avatar-glass">PL</div>
+                        <div>
+                            <div class="evid-name">Paulo Lima</div>
+                            <div class="evid-role">Empresário</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="transformation-card transformation-card-magnetic evid-card" data-animate="fade-up" data-delay="200">
+                    <div class="transformation-icon-wrapper">
+                        <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <div class="transformation-shimmer"></div>
+                    </div>
+                    <div class="evid-stars" aria-hidden="true">★★★★★</div>
+                    <p class="evid-quote">"Pipeline organizado. Agora a equipe sabe o que, quando e por quê."</p>
+                    <div class="evid-signature">
+                        <div class="evid-avatar avatar-glass">AP</div>
+                        <div>
+                            <div class="evid-name">Ana Paula</div>
+                            <div class="evid-role">Head de Vendas</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO MENTORES - REDESIGN PREMIUM -->
+    <section class="mentores-section mentores-glass" aria-labelledby="mentores-title">
+        <div class="container">
+            <div class="mentores-header" data-animate="fade-up">
+                <div class="section-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Quem são os mentores</span>
+                </div>
+                <h2 id="mentores-title" class="mentores-title">Os especialistas por trás do método</h2>
+                <p class="mentores-subtitle">Líderes que transformaram centenas de times e agora compartilham o método comprovado</p>
+            </div>
+
+            <div class="transformation-cards-grid mentores-grid">
+                <!-- Mentor 1: Brendha -->
+                <div class="mentor-card transformation-card transformation-card-magnetic mentor-card-evid" data-animate="fade-up" data-delay="100">
+                    <div class="transformation-icon-wrapper">
+                        <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="transformation-shimmer"></div>
+                    </div>
+                    <div class="mentor-card-inner">
+                        <div class="mentor-photo-wrapper">
+                            <div class="mentor-photo-glow"></div>
+                            <div class="mentor-photo-frame">
+                                <img src="public/brendha2.jpg" alt="Brendha Boaventura" class="mentor-photo" loading="lazy" decoding="async">
+                            </div>
+                            <div class="mentor-photo-shine"></div>
+                        </div>
+                        
+                        <div class="mentor-info">
+                            <div class="mentor-badge">Especialista em Liderança</div>
+                            <h3 class="mentor-name">Brendha Boaventura</h3>
+                            <div class="mentor-content">
+                                <p class="mentor-description">Especialista em liderança prática e gestão comercial. Consultora de empresas que precisam destravar seus times. Criadora da comunidade <strong>Líder Sem Medo</strong>.</p>
+                                <div class="mentor-stats">
+                                    <div class="mentor-stat">
+                                        <div class="mentor-stat-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div class="mentor-stat-content">
+                                            <div class="mentor-stat-number" data-count="500">+0</div>
+                                            <div class="mentor-stat-label">Empresas atendidas</div>
+                                        </div>
+                                    </div>
+                                    <div class="mentor-stat">
+                                        <div class="mentor-stat-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div class="mentor-stat-content">
+                                            <div class="mentor-stat-number" data-count="100">+0</div>
+                                            <div class="mentor-stat-label">Líderes transformados</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#formulario" class="mentor-link-cta">Conhecer o método</a>
+                        </div>
+                    </div>
+                    <div class="mentor-card-bg"></div>
+                </div>
+
+                <!-- Mentor 2: Thiago -->
+                <div class="mentor-card transformation-card transformation-card-magnetic mentor-card-evid" data-animate="fade-up" data-delay="200">
+                    <div class="transformation-icon-wrapper">
+                        <svg class="transformation-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="transformation-shimmer"></div>
+                    </div>
+                    <div class="mentor-card-inner">
+                        <div class="mentor-photo-wrapper">
+                            <div class="mentor-photo-glow"></div>
+                            <div class="mentor-photo-frame">
+                                <img src="public/thiago.jpg" alt="Thiago Diniz" class="mentor-photo" loading="lazy" decoding="async">
+                            </div>
+                            <div class="mentor-photo-shine"></div>
+                        </div>
+                        
+                        <div class="mentor-info">
+                            <div class="mentor-badge">Especialista em Transformação</div>
+                            <h3 class="mentor-name">Thiago Diniz</h3>
+                            <div class="mentor-content">
+                                <p class="mentor-description">Especialista em liderança operacional e transformação de times. Fundador da <strong>2BX Assessoria</strong>. Criador do curso <a href="https://2bxassessoria.com.br/formacao-vendedor-master/" target="_blank" rel="noopener noreferrer" class="mentor-link">Formação Vendedor Master</a>.</p>
+                                <div class="mentor-stats">
+                                    <div class="mentor-stat">
+                                        <div class="mentor-stat-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div class="mentor-stat-content">
+                                            <div class="mentor-stat-number" data-count="100">+0</div>
+                                            <div class="mentor-stat-label">Líderes formados</div>
+                                        </div>
+                                    </div>
+                                    <div class="mentor-stat">
+                                        <div class="mentor-stat-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div class="mentor-stat-content">
+                                            <div class="mentor-stat-number">15+</div>
+                                            <div class="mentor-stat-label">Anos de experiência</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#formulario" class="mentor-link-cta">Quero aprender com os mentores</a>
+                        </div>
+                    </div>
+                    <div class="mentor-card-bg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-header">
+                <div class="section-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="faq-title">Perguntas Frequentes</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item card-secondary">
+                    <div class="faq-question">
+                        <h3>A aula é realmente gratuita?</h3>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, 100% gratuita. Acesso completo sem custo.</p>
+                    </div>
+                </div>
+                <div class="faq-item card-secondary">
+                    <div class="faq-question">
+                        <h3>Preciso ter experiência em liderança?</h3>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não. Para qualquer pessoa que lidera ou quer liderar.</p>
+                    </div>
+                </div>
+                <div class="faq-item card-secondary">
+                    <div class="faq-question">
+                        <h3>Como funciona o acesso à comunidade?</h3>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Após a aula, você recebe link para comunidade no WhatsApp com conteúdos exclusivos.</p>
+                    </div>
+                </div>
+                <div class="faq-item card-secondary">
+                    <div class="faq-question">
+                        <h3>Vou receber algum material?</h3>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, materiais complementares.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="formulario" id="formulario">
+        <div class="container">
+            <div class="formulario-wrapper">
+                <div class="formulario-card card-primary">
+                    <div class="formulario-header">
+                        <h2 class="formulario-title">Garanta sua vaga gratuita agora</h2>
+                        <p class="formulario-subtitle">Após o cadastro, enviaremos o link na comunidade do WhatsApp. Terça, 2 de dezembro, 12h15 • 90 min.</p>
+                        <div class="formulario-badges" aria-label="Resumo da aula">
+                            <div class="badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M16 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M8 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span id="badgeDate">02 Dez 2025</span>
+                            </div>
+                            <div class="badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="badgeTime">12:15</span>
+                            </div>
+                            <div class="badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="5" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M15 10L19 7.7C19.3 7.5 19.5 7.3 19.5 7C19.5 6.7 19.3 6.5 19 6.3L15 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>90 min ao vivo</span>
+                            </div>
+                        </div>
+                        <div class="formulario-urgency">
+                            <div class="online-counter-form">
+                                <span class="online-dot"></span>
+                                <span id="onlineCountForm">128</span> pessoas online agora
+                            </div>
+                        </div>
+                    </div>
+                
+                <form id="cadastroForm" class="form">
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                        <span class="form-error" id="nome-error"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="form-error" id="email-error"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <select id="cargo" name="cargo" required>
+                            <option value="">Selecione seu cargo</option>
+                            <option value="lider-comercial">Líder Comercial</option>
+                            <option value="gestor">Gestor</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="empresario">Empresário</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="diretor">Diretor</option>
+                            <option value="coordenador">Coordenador</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <span class="form-error" id="cargo-error"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-form btn-magnetic" id="submitBtn">
+                        <span class="btn-content">
+                        <span class="btn-text">Garantir minha vaga na aula</span>
+                            <span class="btn-glow"></span>
+                        </span>
+                        <span class="btn-loader" style="display: none;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="32" stroke-dashoffset="32">
+                                    <animate attributeName="stroke-dasharray" dur="2s" values="0 32;16 16;0 32;0 32" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-dashoffset" dur="2s" values="0;-16;-32;-32" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+                
+                </div>
+
+                <!-- Depoimento próximo ao formulário -->
+                <div class="formulario-depoimento card-tertiary">
+                    <div class="formulario-depoimento-stars">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <p class="formulario-depoimento-text">"A melhor decisão que tomei. Minha equipe mudou completamente depois dessa aula."</p>
+                    <div class="formulario-depoimento-author">— Ana Paula, Gerente de Vendas</div>
+                </div>
+                
+                <!-- Toast Notification -->
+                <div id="toast" class="toast"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2025 Líder Sem Medo. 2BX ASSESSORIA EMPRESARIAL LTDA - ME · CNPJ 42.984.845/0001-09 · Todos os direitos reservados. <a href="privacidade.html">Política de Privacidade</a> · <a href="termos.html">Termos de Uso</a></p>
+        </div>
+    </footer>
+
+    <!-- Banner de Consentimento -->
+    <div id="consent-banner" class="consent-banner" role="dialog" aria-live="polite" aria-label="Banner de consentimento de cookies" hidden>
+        <div class="container">
+            <p>Usamos cookies analíticos (Google Analytics) para entender o uso do site. Você pode aceitar para melhorar sua experiência. Leia nossa <a href="privacidade.html">Política de Privacidade</a> e <a href="termos.html">Termos de Uso</a>.</p>
+            <div class="consent-actions">
+                <button id="consent-accept" class="btn-primary">Aceitar</button>
+                <button id="consent-decline" class="btn-secondary">Recusar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

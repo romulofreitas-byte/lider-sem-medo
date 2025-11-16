@@ -1,0 +1,19 @@
+INSTRUÇÕES SOBRE AS IMAGENS:
+
+1. Adicione as fotos dos especialistas neste diretório:
+   - brendha.png (Brendha Boaventura)
+   - thiago.png (Thiago Diniz)
+
+2. Formato recomendado:
+   - PNG com fundo transparente ou JPG
+   - Resolução mínima: 800x800px (para boa qualidade)
+   - Proporção quadrada (1:1) é ideal
+
+3. As imagens serão exibidas em:
+   - Hero section (containers quadrados lado a lado com glassmorphism)
+   - Seção "Sobre os Autores" (fotos circulares)
+
+4. Se as imagens não forem encontradas, o navegador mostrará o texto alternativo definido no HTML.
+
+5. As imagens usam lazy loading para melhor performance.
+
