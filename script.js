@@ -613,22 +613,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 btnLoader.style.display = 'inline-flex';
             }
             
-            // Simular envio (substituir por integração real)
+            // Integração com Supabase
             try {
+                // Verificar se Supabase está carregado
+                if (typeof window.supabase === 'undefined') {
+                    throw new Error('Biblioteca Supabase não carregada. Verifique a conexão com a internet.');
+                }
+                
+                // Configuração do Supabase
+                const supabaseUrl = 'https://riqslkibmvyalnwrapnj.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcXNsa2libXZ5YWxud3JhcG5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyOTk4ODEsImV4cCI6MjA3ODg3NTg4MX0.9Yts0slRMI-FH8dthInuqKDTfEggJNsSyM_ol179rkI';
+                
+                // Criar cliente Supabase
+                const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+                
+                // Preparar dados para inserção
                 const dados = {
                     nome: nome,
                     email: email,
-                    cargo: cargo,
-                    timestamp: new Date().toISOString()
+                    cargo: cargo
                 };
                 
-                console.log('📧 Lista de Espera - Formulário enviado:', dados);
-                console.log('💡 Integre aqui com EmailJS, Formspree, Zapier ou API própria');
+                // Inserir dados no Supabase
+                const { data, error } = await supabase
+                    .from('cadastros')
+                    .insert([dados])
+                    .select();
                 
-                // Simular delay de requisição
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                if (error) {
+                    // Tratar erros específicos
+                    if (error.code === '23505') { // Violação de constraint única (email duplicado)
+                        showError(emailError, 'Este e-mail já está cadastrado');
+                        emailInput.style.borderColor = '#ff4444';
+                        emailInput.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
+                        showToast('Este e-mail já está cadastrado. Use outro e-mail.', 'error');
+                    } else {
+                        console.error('Erro ao enviar formulário:', error);
+                        showToast('Erro ao enviar formulário. Tente novamente.', 'error');
+                    }
+                    
+                    // Esconder loading
+                    if (submitBtn && btnText && btnLoader) {
+                        submitBtn.classList.remove('loading');
+                        btnText.style.display = 'inline';
+                        btnLoader.style.display = 'none';
+                    }
+                    return;
+                }
                 
-                // Sucesso - Lista de Espera
+                // Sucesso - dados salvos
+                console.log('✅ Cadastro realizado com sucesso:', data);
                 showToast('Sua vaga na aula foi registrada! Redirecionando...', 'success');
                 
                 // Redirecionar após 1 segundo
@@ -638,7 +672,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
             } catch (error) {
                 console.error('Erro ao enviar formulário:', error);
-                showToast('Erro ao enviar formulário. Tente novamente.', 'error');
+                showToast('Erro ao enviar formulário. Verifique sua conexão e tente novamente.', 'error');
                 
                 // Esconder loading
                 if (submitBtn && btnText && btnLoader) {
