@@ -645,8 +645,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcXNsa2libXZ5YWxud3JhcG5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyOTk4ODEsImV4cCI6MjA3ODg3NTg4MX0.9Yts0slRMI-FH8dthInuqKDTfEggJNsSyM_ol179rkI';
                 
                 console.log('🔧 Criando cliente Supabase...');
-                // Criar cliente Supabase
-                const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
+                // Criar cliente Supabase (usar nome diferente para evitar conflito)
+                const supabaseClientInstance = supabaseClient.createClient(supabaseUrl, supabaseKey);
                 
                 // Preparar dados para inserção
                 const dados = {
@@ -658,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('📤 Enviando dados para Supabase:', dados);
                 
                 // Inserir dados no Supabase
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClientInstance
                     .from('cadastros')
                     .insert([dados])
                     .select();
