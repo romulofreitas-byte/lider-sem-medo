@@ -539,6 +539,18 @@ body {
     opacity: 0.98;
 }
 
+/* No mobile, garantir que o hero fique acima do background-animated */
+@media (max-width: 768px) {
+    .background-animated {
+        z-index: 0 !important;
+    }
+    
+    section.hero {
+        z-index: 2 !important;
+        position: relative !important;
+    }
+}
+
 /* Canvas para Partículas - Premium Interativo */
 #particles-canvas {
     position: absolute;
@@ -1021,6 +1033,11 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    /* Garantir que o background seja renderizado */
+    background-clip: border-box;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 .hero .container {
@@ -6386,6 +6403,7 @@ body {
    RESPONSIVIDADE
    ============================================ */
 @media (max-width: 768px) {
+    /* SOLUÇÃO DEFINITIVA: Background mobile */
     .hero {
         padding: 0;
         padding-top: 70px;
@@ -6393,37 +6411,77 @@ body {
         max-height: none;
         margin-bottom: 0;
         margin-top: 0;
+        /* Background mobile - caminho relativo à raiz do site */
         background-image: url("public/Banner-site2-mobile3.png") !important;
         background-size: cover !important;
-        background-position: center -60px !important;
+        background-position: center center !important;
         background-repeat: no-repeat !important;
         background-attachment: scroll !important;
         background-color: transparent !important;
         justify-content: flex-end;
         align-items: center;
         position: relative;
-        z-index: 1;
+        z-index: 2 !important;
+        /* Garantir que o background seja renderizado */
+        background-clip: border-box;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        /* Forçar renderização do background */
+        will-change: background-image;
     }
     
     /* Garantir que o background seja visível mesmo com elementos sobrepostos */
-    body .hero {
+    body .hero,
+    html body .hero,
+    body section.hero {
         background-image: url("public/Banner-site2-mobile3.png") !important;
         background-size: cover !important;
-        background-position: center -60px !important;
+        background-position: center center !important;
         background-repeat: no-repeat !important;
+        z-index: 2 !important;
     }
     
     /* Garantir que elementos filhos não cubram o background */
     .hero .container {
         background: transparent !important;
+        background-color: transparent !important;
     }
     
     .hero-grid {
         background: transparent !important;
+        background-color: transparent !important;
     }
     
     .hero-content {
         background: transparent !important;
+        background-color: transparent !important;
+    }
+    
+    /* Garantir que o rolling-banner não cubra o background */
+    .hero .rolling-banner {
+        background: rgba(255, 255, 255, 0.85) !important;
+        position: relative;
+        z-index: 3;
+    }
+    
+    /* Regra final para garantir que o background apareça - máxima especificidade */
+    section.hero,
+    body section.hero,
+    html body section.hero {
+        background-image: url("public/Banner-site2-mobile3.png") !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;
+        z-index: 2 !important;
+        position: relative !important;
+    }
+    
+    /* Garantir que nenhum pseudo-elemento cubra o background */
+    section.hero::before,
+    section.hero::after {
+        display: none !important;
     }
     
     .hero-subtitle {
@@ -6514,6 +6572,20 @@ body {
     
     .hero .rolling-banner {
         margin-top: 1.5rem;
+        background: rgba(255, 255, 255, 0.85) !important;
+        position: relative;
+        z-index: 3;
+    }
+    
+    /* Garantir que background-animated não cubra o hero no mobile */
+    .background-animated {
+        z-index: 0 !important;
+    }
+    
+    /* Garantir que o hero fique acima do background-animated */
+    section.hero {
+        z-index: 2 !important;
+        position: relative;
     }
     
     .sintoma-main {
