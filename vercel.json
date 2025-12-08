@@ -9,10 +9,6 @@
       "destination": "/index.html"
     },
     {
-      "source": "/thankyou",
-      "destination": "/thankyou.html"
-    },
-    {
       "source": "/privacidade",
       "destination": "/privacidade.html"
     },

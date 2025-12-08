@@ -13,7 +13,17 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJ
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 export default async function handler(req, res) {
-  // Permitir apenas requisições POST
+  // Lidar com GET: redirecionar para a página HTML
+  if (req.method === 'GET') {
+    // Redirecionar para thankyou.html
+    res.writeHead(302, {
+      'Location': '/thankyou.html'
+    });
+    res.end();
+    return;
+  }
+
+  // Permitir apenas requisições POST para webhooks
   if (req.method !== 'POST') {
     return res.status(405).json({ 
       error: 'Method Not Allowed',
