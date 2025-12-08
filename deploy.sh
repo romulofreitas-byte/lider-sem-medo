@@ -22,3 +22,4 @@ vercel --prod --yes
 
 echo "✅ Deploy concluído!"
 
+

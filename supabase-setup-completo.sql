@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.cadastros (
 -- 2. Habilitar Row Level Security (RLS)
 ALTER TABLE public.cadastros ENABLE ROW LEVEL SECURITY;
 
--- 3. Remover políticas existentes se houver (para evitar conflitos)
+-- 3. Remover política existente se houver (para evitar conflitos)
 DROP POLICY IF EXISTS "Permitir inserção pública" ON public.cadastros;
 DROP POLICY IF EXISTS "Permitir inserção anon" ON public.cadastros;
 DROP POLICY IF EXISTS "Enable insert for anon users" ON public.cadastros;
@@ -40,12 +40,20 @@ WITH CHECK (true);
 CREATE INDEX IF NOT EXISTS idx_cadastros_email ON public.cadastros(email);
 CREATE INDEX IF NOT EXISTS idx_cadastros_created_at ON public.cadastros(created_at DESC);
 
--- 7. Verificar configuração
+-- 7. Verificar se tudo foi criado corretamente
 DO $$
 BEGIN
     RAISE NOTICE '✅ Tabela cadastros criada/verificada';
     RAISE NOTICE '✅ RLS habilitado';
     RAISE NOTICE '✅ Políticas de inserção criadas';
     RAISE NOTICE '✅ Índices criados';
+    RAISE NOTICE '';
+    RAISE NOTICE '📋 Para testar, execute:';
+    RAISE NOTICE 'INSERT INTO public.cadastros (nome, email, cargo) VALUES (''Teste'', ''teste@exemplo.com'', ''Teste'');';
 END $$;
+
+-- 8. TESTE: Inserir um registro de teste (descomente para testar)
+-- INSERT INTO public.cadastros (nome, email, cargo) 
+-- VALUES ('Teste', 'teste@exemplo.com', 'Teste');
+
 

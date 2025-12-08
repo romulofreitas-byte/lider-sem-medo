@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // EVENTO: Data/Hora (fonte única)
     // Atualize aqui quando necessário
     // ============================================
-    window.EVENT_DATE = window.EVENT_DATE || '02 Dez 2025';
+    window.EVENT_DATE = window.EVENT_DATE || '11 Dez 2025';
     window.EVENT_TIME = window.EVENT_TIME || '12:15';
     const syncEventDateTime = () => {
         const headerDate = document.querySelector('.header-date');
@@ -466,286 +466,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ============================================
-    // 9. VALIDAÇÃO VISUAL DO FORMULÁRIO
-    // ============================================
-    const nomeInput = document.getElementById('nome');
-    const emailInput = document.getElementById('email');
-    const cargoSelect = document.getElementById('cargo');
-    const nomeError = document.getElementById('nome-error');
-    const emailError = document.getElementById('email-error');
-    const cargoError = document.getElementById('cargo-error');
-    
-    // Foco a partir do card de garantia interativo
-    const garantiaFocusBtn = document.getElementById('garantiaFocus');
-    if (garantiaFocusBtn && nomeInput) {
-        garantiaFocusBtn.addEventListener('click', () => {
-            nomeInput.focus();
-            nomeInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    }
-    
-    // Validação em tempo real - Nome
-    if (nomeInput) {
-        nomeInput.addEventListener('blur', function() {
-            if (this.value.trim().length < 3) {
-                showError(nomeError, 'Nome deve ter pelo menos 3 caracteres');
-                this.style.borderColor = '#ff4444';
-                this.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
-            } else {
-                hideError(nomeError);
-                this.style.borderColor = 'rgba(129, 84, 51, 0.5)';
-                this.style.boxShadow = '0 0 0 3px rgba(129, 84, 51, 0.15)';
-            }
-        });
-        
-        nomeInput.addEventListener('input', function() {
-            if (this.value.trim().length >= 3) {
-                hideError(nomeError);
-                this.style.borderColor = 'rgba(129, 84, 51, 0.5)';
-                this.style.boxShadow = '0 0 0 3px rgba(129, 84, 51, 0.15)';
-            }
-        });
-    }
-    
-    // Validação em tempo real - Email
-    if (emailInput) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        emailInput.addEventListener('blur', function() {
-            if (!emailRegex.test(this.value)) {
-                showError(emailError, 'Por favor, insira um e-mail válido');
-                this.style.borderColor = '#ff4444';
-                this.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
-            } else {
-                hideError(emailError);
-                this.style.borderColor = 'rgba(129, 84, 51, 0.5)';
-                this.style.boxShadow = '0 0 0 3px rgba(129, 84, 51, 0.15)';
-            }
-        });
-        
-        emailInput.addEventListener('input', function() {
-            if (emailRegex.test(this.value)) {
-                hideError(emailError);
-                this.style.borderColor = 'rgba(129, 84, 51, 0.5)';
-                this.style.boxShadow = '0 0 0 3px rgba(129, 84, 51, 0.15)';
-            }
-        });
-    }
-    
-    // Validação em tempo real - Cargo
-    if (cargoSelect) {
-        cargoSelect.addEventListener('change', function() {
-            if (this.value) {
-                hideError(cargoError);
-                this.style.borderColor = 'rgba(129, 84, 51, 0.5)';
-                this.style.boxShadow = '0 0 0 3px rgba(129, 84, 51, 0.15)';
-            }
-        });
-    }
-    
-    // Funções auxiliares de erro
-    function showError(errorElement, message) {
-        if (errorElement) {
-            errorElement.textContent = message;
-            errorElement.classList.add('show');
-        }
-    }
-    
-    function hideError(errorElement) {
-        if (errorElement) {
-            errorElement.textContent = '';
-            errorElement.classList.remove('show');
-        }
-    }
-    
-    // ============================================
-    // 10. ENVIO DO FORMULÁRIO COM LOADING
-    // ============================================
-    const cadastroForm = document.getElementById('cadastroForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = submitBtn?.querySelector('.btn-text');
-    const btnLoader = submitBtn?.querySelector('.btn-loader');
-    
-    if (cadastroForm) {
-        cadastroForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            console.log('📝 Formulário submetido - Iniciando processamento...');
-            
-            // Coletar dados
-            const nome = nomeInput?.value.trim();
-            const email = emailInput?.value.trim();
-            const cargo = cargoSelect?.value;
-            
-            console.log('📋 Dados coletados:', { nome, email, cargo });
-            
-            // Validação final
-            let hasError = false;
-            
-            if (!nome || nome.length < 3) {
-                showError(nomeError, 'Nome deve ter pelo menos 3 caracteres');
-                nomeInput.style.borderColor = '#ff4444';
-                nomeInput.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
-                hasError = true;
-            }
-            
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email || !emailRegex.test(email)) {
-                showError(emailError, 'Por favor, insira um e-mail válido');
-                emailInput.style.borderColor = '#ff4444';
-                emailInput.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
-                hasError = true;
-            }
-            
-            if (!cargo) {
-                showError(cargoError, 'Por favor, selecione seu cargo');
-                cargoSelect.style.borderColor = '#ff4444';
-                cargoSelect.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
-                hasError = true;
-            }
-            
-            if (hasError) {
-                showToast('Por favor, corrija os erros no formulário', 'error');
-                return;
-            }
-            
-            // Mostrar loading
-            if (submitBtn && btnText && btnLoader) {
-                submitBtn.classList.add('loading');
-                btnText.style.display = 'none';
-                btnLoader.style.display = 'inline-flex';
-            }
-            
-            // Integração com Supabase
-            try {
-                console.log('🔍 Verificando se Supabase está disponível...');
-                
-                // Verificar se Supabase está carregado
-                // O CDN expõe como 'supabase' (sem window) ou pode estar em window.supabase
-                let supabaseClient;
-                if (typeof supabase !== 'undefined' && supabase.createClient) {
-                    console.log('✅ Supabase encontrado como variável global "supabase"');
-                    supabaseClient = supabase;
-                } else if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
-                    console.log('✅ Supabase encontrado como "window.supabase"');
-                    supabaseClient = window.supabase;
-                } else {
-                    console.error('❌ Supabase não encontrado. Verificando objetos globais:', {
-                        'supabase': typeof supabase,
-                        'window.supabase': typeof window.supabase,
-                        'window.supabaseClient': typeof window.supabaseClient,
-                        'window': Object.keys(window).filter(k => k.toLowerCase().includes('supabase'))
-                    });
-                    throw new Error('Biblioteca Supabase não carregada. Verifique a conexão com a internet e recarregue a página.');
-                }
-                
-                // Configuração do Supabase
-                const supabaseUrl = 'https://riqslkibmvyalnwrapnj.supabase.co';
-                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJpcXNsa2libXZ5YWxud3JhcG5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyOTk4ODEsImV4cCI6MjA3ODg3NTg4MX0.9Yts0slRMI-FH8dthInuqKDTfEggJNsSyM_ol179rkI';
-                
-                console.log('🔧 Criando cliente Supabase...');
-                // Criar cliente Supabase (usar nome diferente para evitar conflito)
-                const supabaseClientInstance = supabaseClient.createClient(supabaseUrl, supabaseKey);
-                
-                // Preparar dados para inserção
-                const dados = {
-                    nome: nome,
-                    email: email,
-                    cargo: cargo
-                };
-                
-                console.log('📤 Enviando dados para Supabase:', dados);
-                
-                // Inserir dados no Supabase
-                const { data, error } = await supabaseClientInstance
-                    .from('cadastros')
-                    .insert([dados])
-                    .select();
-                
-                if (error) {
-                    console.error('❌ Erro do Supabase:', {
-                        message: error.message,
-                        code: error.code,
-                        details: error.details,
-                        hint: error.hint
-                    });
-                    
-                    // Tratar erros específicos
-                    if (error.code === '23505') { // Violação de constraint única (email duplicado)
-                        showError(emailError, 'Este e-mail já está cadastrado');
-                        emailInput.style.borderColor = '#ff4444';
-                        emailInput.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1), 0 0 20px rgba(255, 68, 68, 0.2)';
-                        showToast('Este e-mail já está cadastrado. Use outro e-mail.', 'error');
-                    } else if (error.code === '42P01') { // Tabela não existe
-                        console.error('❌ Tabela "cadastros" não encontrada. Execute o script SQL no Supabase.');
-                        showToast('Erro de configuração. Entre em contato com o suporte.', 'error');
-                    } else if (error.code === '42501') { // Permissão negada (RLS)
-                        console.error('❌ Permissão negada. Verifique as políticas RLS no Supabase.');
-                        showToast('Erro de permissão. Entre em contato com o suporte.', 'error');
-                    } else {
-                        console.error('❌ Erro desconhecido:', error);
-                        showToast(`Erro ao enviar: ${error.message || 'Tente novamente'}`, 'error');
-                    }
-                    
-                    // Esconder loading
-                    if (submitBtn && btnText && btnLoader) {
-                        submitBtn.classList.remove('loading');
-                        btnText.style.display = 'inline';
-                        btnLoader.style.display = 'none';
-                    }
-                    return;
-                }
-                
-                // Sucesso - dados salvos
-                console.log('✅ Cadastro realizado com sucesso:', data);
-                console.log('✅ Dados confirmados no Supabase. Redirecionando...');
-                showToast('Sua vaga na aula foi registrada! Redirecionando...', 'success');
-                
-                // Redirecionar após 1 segundo (APENAS se chegou até aqui com sucesso)
-                setTimeout(() => {
-                    console.log('🔄 Redirecionando para thankyou.html...');
-                    window.location.href = 'thankyou.html';
-                }, 1000);
-                
-            } catch (error) {
-                console.error('❌ ERRO CAPTURADO ao enviar formulário:', error);
-                console.error('❌ Tipo do erro:', error.constructor.name);
-                console.error('❌ Mensagem:', error.message);
-                console.error('❌ Stack trace:', error.stack);
-                console.error('❌ NÃO redirecionando - erro impediu o salvamento');
-                
-                showToast(`Erro: ${error.message || 'Verifique sua conexão e tente novamente'}`, 'error');
-                
-                // Esconder loading
-                if (submitBtn && btnText && btnLoader) {
-                    submitBtn.classList.remove('loading');
-                    btnText.style.display = 'inline';
-                    btnLoader.style.display = 'none';
-                }
-                
-                // NÃO redirecionar em caso de erro
-                return;
-            }
-        });
-    }
-    
-    // ============================================
-    // 11. TOAST NOTIFICATIONS
-    // ============================================
-    function showToast(message, type = 'success') {
-        const toast = document.getElementById('toast');
-        
-        if (!toast) return;
-        
-        toast.textContent = message;
-        toast.className = `toast ${type}`;
-        toast.classList.add('show');
-        
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 4000);
-    }
     
     // ============================================
     // 12. ANIMAÇÃO DE PREENCHIMENTO DA BARRA DE PROGRESSO
@@ -1933,6 +1653,22 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDots();
         moveToIndex();
         startAutoplay();
+    })();
+
+    // ============================================
+    // 21e. FEEDBACKS EM MOVIMENTO - PAUSAR AO CLICAR
+    // ============================================
+    (function initDepoimentosPrintsPause(){
+        const wrapper = document.querySelector('.depoimentos-prints__track-wrapper');
+        if (!wrapper) return;
+        const items = wrapper.querySelectorAll('.depoimentos-prints__item');
+        if (!items.length) return;
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                wrapper.classList.toggle('is-paused');
+            });
+        });
     })();
     
     // ============================================

@@ -5370,11 +5370,11 @@ body {
    FORMULÁRIO INTERATIVO
    ============================================ */
 .formulario {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
     position: relative;
     z-index: 1;
     background: transparent;
-    margin-top: var(--spacing-md);
+    margin-top: var(--spacing-sm);
 }
 
 .formulario-card {
@@ -5711,10 +5711,10 @@ body {
    CARD DE PAGAMENTO PREMIUM
    ============================================ */
 .pagamento-premium-content {
-    padding: var(--spacing-xxl);
+    padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xxl);
+    gap: var(--spacing-md);
     position: relative;
     z-index: 1;
 }
@@ -5723,16 +5723,16 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 0.5rem;
 }
 
 .pagamento-premium-badge {
     display: inline-block;
-    padding: 0.5rem 1.25rem;
+    padding: 0.35rem 1rem;
     background: linear-gradient(135deg, rgba(129, 84, 51, 0.12) 0%, rgba(150, 122, 98, 0.1) 100%);
     border: 1px solid rgba(129, 84, 51, 0.25);
     border-radius: 50px;
-    font-size: clamp(11px, 1.2vw, 13px);
+    font-size: clamp(10px, 1.1vw, 12px);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -5742,7 +5742,7 @@ body {
 
 .pagamento-premium-title {
     font-family: var(--font-heading);
-    font-size: clamp(32px, 4vw, 48px);
+    font-size: clamp(24px, 3vw, 32px);
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.2;
@@ -5751,8 +5751,8 @@ body {
 }
 
 .pagamento-premium-subtitle {
-    font-size: clamp(16px, 1.8vw, 20px);
-    line-height: 1.6;
+    font-size: clamp(14px, 1.6vw, 16px);
+    line-height: 1.5;
     color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto;
@@ -5763,8 +5763,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-xl) 0;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
     border-top: 1px solid rgba(129, 84, 51, 0.1);
     border-bottom: 1px solid rgba(129, 84, 51, 0.1);
     flex-wrap: wrap;
@@ -5773,20 +5773,20 @@ body {
 .pagamento-info-item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     flex: 1;
-    min-width: 180px;
+    min-width: 140px;
     justify-content: center;
 }
 
 .info-icon {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(129, 84, 51, 0.08);
-    border-radius: 12px;
+    border-radius: 8px;
     border: 1px solid rgba(129, 84, 51, 0.15);
     color: var(--accent-primary);
     flex-shrink: 0;
@@ -5800,18 +5800,18 @@ body {
 }
 
 .info-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
 }
 
 .info-content {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.15rem;
 }
 
 .info-label {
-    font-size: clamp(12px, 1.3vw, 14px);
+    font-size: clamp(11px, 1.2vw, 12px);
     color: var(--text-muted);
     font-weight: 500;
     text-transform: uppercase;
@@ -5820,29 +5820,29 @@ body {
 
 .info-value {
     font-family: var(--font-heading);
-    font-size: clamp(16px, 1.8vw, 18px);
+    font-size: clamp(14px, 1.6vw, 16px);
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .pagamento-info-divider {
     width: 1px;
-    height: 60px;
+    height: 40px;
     background: linear-gradient(180deg, transparent, rgba(129, 84, 51, 0.2), transparent);
 }
 
 .pagamento-premium-beneficios {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg) 0;
+    gap: 0.5rem;
+    padding: var(--spacing-md) 0;
 }
 
 .beneficio-premium {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+    padding: 0.75rem;
     background: rgba(129, 84, 51, 0.03);
     border-radius: var(--radius-md);
     border: 1px solid rgba(129, 84, 51, 0.08);
@@ -5855,13 +5855,13 @@ body {
 }
 
 .beneficio-check {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(129, 84, 51, 0.1);
-    border-radius: 6px;
+    border-radius: 5px;
     color: var(--accent-primary);
     flex-shrink: 0;
     transition: all 0.3s ease;
@@ -5872,9 +5872,14 @@ body {
     transform: scale(1.1);
 }
 
+.beneficio-check svg {
+    width: 14px;
+    height: 14px;
+}
+
 .beneficio-premium span {
-    font-size: clamp(15px, 1.7vw, 17px);
-    line-height: 1.6;
+    font-size: clamp(13px, 1.5vw, 15px);
+    line-height: 1.5;
     color: var(--text-primary);
     font-weight: 400;
     padding-top: 2px;
@@ -5882,24 +5887,24 @@ body {
 
 .pagamento-premium-price {
     text-align: center;
-    padding: var(--spacing-xl);
+    padding: var(--spacing-md);
     background: linear-gradient(135deg, rgba(129, 84, 51, 0.08) 0%, rgba(150, 122, 98, 0.06) 100%);
     border-radius: var(--radius-lg);
     border: 1px solid rgba(129, 84, 51, 0.15);
 }
 
 .price-label {
-    font-size: clamp(13px, 1.5vw, 15px);
+    font-size: clamp(11px, 1.3vw, 13px);
     color: var(--text-muted);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 0.5rem;
 }
 
 .price-value {
     font-family: var(--font-heading);
-    font-size: clamp(48px, 6vw, 72px);
+    font-size: clamp(36px, 5vw, 48px);
     font-weight: 700;
     background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
     -webkit-background-clip: text;
@@ -5911,8 +5916,8 @@ body {
 
 .btn-premium-cta {
     width: 100%;
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: clamp(16px, 1.8vw, 18px);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: clamp(15px, 1.7vw, 17px);
     font-weight: 700;
     box-shadow: 0 8px 24px rgba(129, 84, 51, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -5925,19 +5930,20 @@ body {
 
 @media (max-width: 768px) {
     .pagamento-premium-content {
-        padding: var(--spacing-xl);
-        gap: var(--spacing-xl);
+        padding: var(--spacing-md);
+        gap: var(--spacing-sm);
     }
     
     .pagamento-premium-info {
         flex-direction: column;
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) 0;
     }
     
     .pagamento-info-divider {
         width: 100%;
         height: 1px;
-        margin: var(--spacing-xs) 0;
+        margin: 0.25rem 0;
     }
     
     .pagamento-info-item {
@@ -5946,7 +5952,7 @@ body {
     }
     
     .price-value {
-        font-size: clamp(40px, 10vw, 56px);
+        font-size: clamp(32px, 8vw, 40px);
     }
 }
 
