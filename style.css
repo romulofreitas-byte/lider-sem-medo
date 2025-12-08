@@ -6371,8 +6371,18 @@ body {
         background-size: cover !important;
         background-position: center -60px !important;
         background-repeat: no-repeat !important;
+        background-attachment: scroll !important;
+        background-color: transparent !important;
         justify-content: flex-end;
         align-items: center;
+    }
+    
+    /* Garantir que o background seja visível mesmo com elementos sobrepostos */
+    body .hero {
+        background-image: url("public/Banner-site2-mobile3.png") !important;
+        background-size: cover !important;
+        background-position: center -60px !important;
+        background-repeat: no-repeat !important;
     }
     
     .hero-subtitle {
