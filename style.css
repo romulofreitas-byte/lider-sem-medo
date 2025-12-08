@@ -1017,7 +1017,11 @@ body {
     z-index: 1;
     overflow: visible;
     margin-bottom: 3rem;
-    margin-top: 2rem;
+    margin-top: 0;
+    background-image: url("public/Banner-site2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero .container {
@@ -1040,7 +1044,7 @@ body {
 
 @media (min-width: 1024px) {
     .hero-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 40px;
         align-items: center;
     }
@@ -1053,7 +1057,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 60px 0 0;
     width: 100%;
 }
 
@@ -1061,9 +1065,9 @@ body {
     /* Remover limitação de 600px para usar toda largura disponível na coluna do grid */
     /* O grid já controla a largura (1fr), então podemos usar 100% */
     .hero-content {
-        margin: 0;
+        margin: 60px 0 0;
         align-items: flex-start;
-        max-width: 100%;
+        max-width: 700px;
         width: 100%;
         min-width: 0;
     }
@@ -5389,6 +5393,45 @@ body {
     overflow: hidden;
 }
 
+.pagamento-premium {
+    max-width: 1000px;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.65) 100%);
+    border: 2px solid rgba(129, 84, 51, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 16px 50px rgba(129, 84, 51, 0.15), 0 0 40px rgba(129, 84, 51, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.pagamento-premium::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, rgba(129, 84, 51, 0.28), rgba(150, 122, 98, 0.28));
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+}
+
+.pagamento-premium:hover::before {
+    opacity: 1;
+}
+
+.pagamento-premium:hover {
+    transform: translateY(-6px);
+    border-color: rgba(129, 84, 51, 0.35);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.8) 100%);
+    box-shadow: 0 20px 60px rgba(129, 84, 51, 0.22), 0 0 50px rgba(129, 84, 51, 0.18);
+}
+
 .formulario-card::before {
     content: '';
     position: absolute;
@@ -5413,7 +5456,7 @@ body {
 }
 
 .formulario-wrapper {
-    max-width: 700px;
+    max-width: 1050px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -5662,6 +5705,249 @@ body {
 
 .form-error.show {
     opacity: 1;
+}
+
+/* ============================================
+   CARD DE PAGAMENTO PREMIUM
+   ============================================ */
+.pagamento-premium-content {
+    padding: var(--spacing-xxl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+    position: relative;
+    z-index: 1;
+}
+
+.pagamento-premium-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.pagamento-premium-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, rgba(129, 84, 51, 0.12) 0%, rgba(150, 122, 98, 0.1) 100%);
+    border: 1px solid rgba(129, 84, 51, 0.25);
+    border-radius: 50px;
+    font-size: clamp(11px, 1.2vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    align-self: center;
+}
+
+.pagamento-premium-title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.pagamento-premium-subtitle {
+    font-size: clamp(16px, 1.8vw, 20px);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+.pagamento-premium-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid rgba(129, 84, 51, 0.1);
+    border-bottom: 1px solid rgba(129, 84, 51, 0.1);
+    flex-wrap: wrap;
+}
+
+.pagamento-info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-width: 180px;
+    justify-content: center;
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(129, 84, 51, 0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(129, 84, 51, 0.15);
+    color: var(--accent-primary);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.pagamento-premium:hover .info-icon {
+    background: rgba(129, 84, 51, 0.12);
+    border-color: rgba(129, 84, 51, 0.25);
+    transform: translateY(-2px);
+}
+
+.info-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: clamp(12px, 1.3vw, 14px);
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-value {
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.pagamento-info-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(180deg, transparent, rgba(129, 84, 51, 0.2), transparent);
+}
+
+.pagamento-premium-beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) 0;
+}
+
+.beneficio-premium {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(129, 84, 51, 0.03);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(129, 84, 51, 0.08);
+    transition: all 0.3s ease;
+}
+
+.pagamento-premium:hover .beneficio-premium {
+    background: rgba(129, 84, 51, 0.05);
+    border-color: rgba(129, 84, 51, 0.15);
+}
+
+.beneficio-check {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(129, 84, 51, 0.1);
+    border-radius: 6px;
+    color: var(--accent-primary);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.beneficio-premium:hover .beneficio-check {
+    background: rgba(129, 84, 51, 0.15);
+    transform: scale(1.1);
+}
+
+.beneficio-premium span {
+    font-size: clamp(15px, 1.7vw, 17px);
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-weight: 400;
+    padding-top: 2px;
+}
+
+.pagamento-premium-price {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, rgba(129, 84, 51, 0.08) 0%, rgba(150, 122, 98, 0.06) 100%);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(129, 84, 51, 0.15);
+}
+
+.price-label {
+    font-size: clamp(13px, 1.5vw, 15px);
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.price-value {
+    font-family: var(--font-heading);
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.btn-premium-cta {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(129, 84, 51, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-premium-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(129, 84, 51, 0.3);
+}
+
+@media (max-width: 768px) {
+    .pagamento-premium-content {
+        padding: var(--spacing-xl);
+        gap: var(--spacing-xl);
+    }
+    
+    .pagamento-premium-info {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .pagamento-info-divider {
+        width: 100%;
+        height: 1px;
+        margin: var(--spacing-xs) 0;
+    }
+    
+    .pagamento-info-item {
+        min-width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .price-value {
+        font-size: clamp(40px, 10vw, 56px);
+    }
 }
 
 .btn-form {
