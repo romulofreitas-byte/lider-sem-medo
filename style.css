@@ -1043,7 +1043,7 @@ body {
 
 @media (min-width: 1024px) {
     .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
         align-items: center;
     }
@@ -1061,12 +1061,11 @@ body {
 }
 
 @media (min-width: 1024px) {
-    /* Remover limitação de 600px para usar toda largura disponível na coluna do grid */
-    /* O grid já controla a largura (1fr), então podemos usar 100% */
+    /* Conteúdo confinado à primeira coluna do grid de 2 colunas */
     .hero-content {
         margin: 60px 0 0;
         align-items: flex-start;
-        max-width: 700px;
+        max-width: 550px;
         width: 100%;
         min-width: 0;
     }
@@ -1091,6 +1090,18 @@ body {
     max-width: 680px;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+/* Ajustes de título e subtítulo para desktop */
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: clamp(21.691px, 3.353vw, 34.510px);
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(10.033px, 1.544vw, 13.892px);
+        max-width: 500px;
+    }
 }
 
 /* Seção de Bullet Points após a faixa de looping - Premium Interativa */
@@ -2748,16 +2759,16 @@ body {
     color: #ffffff;
     text-decoration: none;
     font-family: var(--font-heading);
-    font-size: clamp(0.75rem, 1.4vw, 0.875rem);
-    font-weight: 600;
-    padding: 0.875rem 2rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 700;
+    padding: 1rem 2.5rem;
     border: none;
     border-radius: var(--radius-xl);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 4px 16px rgba(129, 84, 51, 0.25);
     overflow: hidden;
     will-change: transform;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     transform-style: preserve-3d;
     cursor: pointer;
 }
@@ -2790,8 +2801,8 @@ body {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 24px rgba(129, 84, 51, 0.35);
     background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-light) 100%);
 }
 
@@ -3555,17 +3566,28 @@ body {
     display: block;
 }
 
+.hero-title-line1 {
+    white-space: nowrap;
+}
+
 .hero-title-line2 {
     color: var(--accent-primary);
     -webkit-text-fill-color: var(--accent-primary);
 }
 
 .btn-primary-hero {
-    font-size: clamp(0.75rem, 1.4vw, 0.875rem);
-    padding: 0.875rem 2rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    padding: 1rem 2.5rem;
     width: 100%;
-    max-width: 360px;
-    box-shadow: var(--shadow-soft);
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(129, 84, 51, 0.25);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.btn-primary-hero:hover {
+    box-shadow: 0 6px 24px rgba(129, 84, 51, 0.35);
+    transform: translateY(-3px) scale(1.02);
 }
 
 .hero-urgency {
@@ -3573,37 +3595,6 @@ body {
     flex-direction: column;
     gap: 10px;
     margin-top: 6px;
-}
-
-/* Garantir que o contador online não afete a largura da barra */
-.online-counter {
-    align-self: flex-start;
-    flex-shrink: 0;
-}
-
-.online-counter,
-.online-counter-form {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: clamp(11px, 1.2vw, 13px);
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.online-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
-    animation: pulse-dot 2s ease-in-out infinite;
-    flex-shrink: 0;
-}
-
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.2); }
 }
 
 /* ============================================
@@ -6244,16 +6235,17 @@ body {
 
 .btn-premium-cta {
     width: 100%;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    font-size: clamp(15px, 1.7vw, 17px);
+    padding: 1.125rem 2.5rem;
+    font-size: clamp(16px, 1.8vw, 18px);
     font-weight: 700;
-    box-shadow: 0 8px 24px rgba(129, 84, 51, 0.2);
+    box-shadow: 0 8px 24px rgba(129, 84, 51, 0.25);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.03em;
 }
 
 .btn-premium-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(129, 84, 51, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(129, 84, 51, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -6375,10 +6367,10 @@ body {
         max-height: none;
         margin-bottom: 0;
         margin-top: 0;
-        background-image: url("public/Banner-site2-mobile3.png");
-        background-size: cover;
-        background-position: center -60px;
-        background-repeat: no-repeat;
+        background-image: url("public/Banner-site2-mobile3.png") !important;
+        background-size: cover !important;
+        background-position: center -60px !important;
+        background-repeat: no-repeat !important;
         justify-content: flex-end;
         align-items: center;
     }
@@ -6421,11 +6413,6 @@ body {
         margin-top: 8px;
     }
     
-    .online-counter {
-        margin-bottom: 4px;
-        font-size: clamp(10px, 1.1vw, 12px);
-    }
-    
     .progress-wrapper {
         margin-top: 4px;
         width: 100%;
@@ -6463,8 +6450,15 @@ body {
     }
     
     .btn-primary-hero {
-        padding: 0.75rem 1.5rem;
-        font-size: clamp(0.7rem, 1.3vw, 0.8rem);
+        padding: 0.875rem 2rem;
+        font-size: clamp(0.875rem, 1.4vw, 0.95rem);
+        font-weight: 700;
+        max-width: 100%;
+        box-shadow: 0 4px 16px rgba(129, 84, 51, 0.25);
+    }
+    
+    .btn-primary-hero:hover {
+        box-shadow: 0 6px 20px rgba(129, 84, 51, 0.35);
     }
     
     .hero .rolling-banner {
