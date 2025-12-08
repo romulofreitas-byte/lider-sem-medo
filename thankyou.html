@@ -169,7 +169,7 @@
                         </a>
 
                         <!-- Botão Secundário: Google Calendar -->
-                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Workshop+-+Minha+Equipe%2C+Me+Respeita&dates=20251211T200000-03:00/20251211T223000-03:00&details=Workshop+ao+vivo+sobre+liderança+e+respeito+na+equipe.+Link+do+Google+Meet%3A+https%3A%2F%2Fmeet.google.com%2Fotw-aghf-izx&location=https://meet.google.com/otw-aghf-izx" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-calendar btn-magnetic">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-calendar btn-magnetic" id="googleCalendarBtn">
                             <span class="btn-content">
                                 <span class="btn-icon" aria-hidden="true">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -256,5 +256,51 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Função para gerar URL do Google Calendar com data correta
+        (function() {
+            // Data do evento: 11 de dezembro de 2025, 20:00 - 22:30 (America/Sao_Paulo, UTC-3)
+            // Criar data no fuso horário de São Paulo
+            const eventDate = new Date('2025-12-11T20:00:00-03:00'); // 11/12/2025 20:00 BRT
+            const eventEndDate = new Date('2025-12-11T22:30:00-03:00'); // 11/12/2025 22:30 BRT
+            
+            // Função para formatar data no formato do Google Calendar (YYYYMMDDTHHMMSSZ)
+            function formatGoogleCalendarDate(date) {
+                const year = date.getUTCFullYear();
+                const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                const day = String(date.getUTCDate()).padStart(2, '0');
+                const hours = String(date.getUTCHours()).padStart(2, '0');
+                const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+                return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
+            }
+            
+            // Formatar datas
+            const startDate = formatGoogleCalendarDate(eventDate);
+            const endDate = formatGoogleCalendarDate(eventEndDate);
+            
+            // Parâmetros da URL
+            const title = encodeURIComponent('Workshop - Minha Equipe, Me Respeita');
+            const details = encodeURIComponent('Workshop ao vivo sobre liderança e respeito na equipe.\n\nLink do Google Meet: https://meet.google.com/otw-aghf-izx');
+            const location = encodeURIComponent('https://meet.google.com/otw-aghf-izx');
+            
+            // Gerar URL do Google Calendar
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
+            
+            // Atualizar o href do botão do Google Calendar quando a página carregar
+            document.addEventListener('DOMContentLoaded', function() {
+                const calendarButton = document.getElementById('googleCalendarBtn') || document.querySelector('.btn-calendar');
+                if (calendarButton) {
+                    calendarButton.href = calendarUrl;
+                }
+            });
+            
+            // Também atualizar imediatamente se o DOM já estiver carregado
+            const calendarButton = document.getElementById('googleCalendarBtn') || document.querySelector('.btn-calendar');
+            if (calendarButton) {
+                calendarButton.href = calendarUrl;
+            }
+        })();
+    </script>
 </body>
 </html>
