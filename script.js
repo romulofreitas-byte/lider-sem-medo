@@ -683,18 +683,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // 15. PRELOAD DE RECURSOS CRÍTICOS
     // ============================================
+    // Apenas pré-carregar imagens se estiverem sendo usadas na página
     const preloadImages = () => {
+        // Verificar se estamos na página index.html (não na thankyou.html)
+        const isThankYouPage = window.location.pathname.includes('thankyou') || 
+                               document.querySelector('.ty-hero') !== null;
+        
+        // Se for página de agradecimento, não fazer preload dessas imagens
+        if (isThankYouPage) {
+            return;
+        }
+        
+        // Verificar se as imagens são realmente usadas na página antes de pré-carregar
         const criticalImages = [
             'public/brendha.jpg',
             'public/Logo Líder Sem Medo Branco.png'
         ];
         
         criticalImages.forEach(src => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = src;
-            document.head.appendChild(link);
+            // Verificar se a imagem é usada em algum lugar da página
+            const imageName = src.split('/').pop();
+            const isImageUsed = Array.from(document.querySelectorAll('img, [style*="background-image"]')).some(el => {
+                const imgSrc = el.src || el.getAttribute('src') || '';
+                const bgImage = window.getComputedStyle(el).backgroundImage || '';
+                return imgSrc.includes(imageName) || bgImage.includes(imageName);
+            });
+            
+            // Só fazer preload se a imagem for realmente usada
+            if (isImageUsed) {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            }
         });
     };
     
