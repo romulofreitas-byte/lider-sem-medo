@@ -1629,6 +1629,255 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     // ============================================
+    // 21c. CARROSSEL DE EVIDÊNCIAS - PROVAS REAIS DE TRANSFORMAÇÃO
+    // ============================================
+    (function initEvidenciasCarousel() {
+        const evidenciasCarousel = document.querySelector('.evidencias-carousel');
+        if (!evidenciasCarousel) return;
+        
+        const track = evidenciasCarousel.querySelector('.evid-carousel-track');
+        const inner = evidenciasCarousel.querySelector('.evid-carousel-inner');
+        const items = Array.from(evidenciasCarousel.querySelectorAll('.evid-carousel-item'));
+        const btnPrev = evidenciasCarousel.querySelector('.evid-carousel-prev');
+        const btnNext = evidenciasCarousel.querySelector('.evid-carousel-next');
+        const dotsContainer = evidenciasCarousel.querySelector('.evid-carousel-dots');
+        const autoplay = evidenciasCarousel.getAttribute('data-autoplay') === 'true';
+        const autoplayInterval = parseInt(evidenciasCarousel.getAttribute('data-autoplay-interval')) || 4500;
+        
+        if (!track || !inner || !items.length) return;
+        
+        let index = 0;
+        let itemsPerView = 1;
+        let autoTimer = null;
+        
+        const updateItemsPerView = () => {
+            const width = window.innerWidth;
+            // Mobile: 1 card, Tablet/Desktop: 2 cards
+            if (width >= 768) itemsPerView = 2;
+            else itemsPerView = 1;
+        };
+        
+        const updateDots = () => {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            const pages = Math.ceil(items.length / itemsPerView);
+            for (let i = 0; i < pages; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'evid-carousel-dot' + (i === index ? ' active' : '');
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', `Ir para depoimento ${i + 1}`);
+                dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+                dot.addEventListener('click', () => {
+                    index = i;
+                    moveToIndex();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        };
+        
+        const moveToIndex = () => {
+            // Calcula a posição considerando o tamanho de cada item
+            const itemWidth = 100 / itemsPerView;
+            const percentage = -(index * itemWidth);
+            inner.style.transition = 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)';
+            inner.style.transform = `translateX(${percentage}%)`;
+            updateDots();
+        };
+        
+        const goNext = () => {
+            const pages = Math.ceil(items.length / itemsPerView);
+            index = (index + 1) % pages;
+            moveToIndex();
+        };
+        
+        const goPrev = () => {
+            const pages = Math.ceil(items.length / itemsPerView);
+            index = (index - 1 + pages) % pages;
+            moveToIndex();
+        };
+        
+        const startAutoplay = () => {
+            if (!autoplay) return;
+            stopAutoplay();
+            autoTimer = setInterval(goNext, autoplayInterval);
+        };
+        
+        const stopAutoplay = () => {
+            if (autoTimer) {
+                clearInterval(autoTimer);
+                autoTimer = null;
+            }
+        };
+        
+        // Controles
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                goNext();
+                stopAutoplay();
+                setTimeout(startAutoplay, 2000); // Reinicia após 2s
+            });
+        }
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                goPrev();
+                stopAutoplay();
+                setTimeout(startAutoplay, 2000); // Reinicia após 2s
+            });
+        }
+        
+        // Pausa no hover
+        evidenciasCarousel.addEventListener('mouseenter', stopAutoplay);
+        evidenciasCarousel.addEventListener('mouseleave', startAutoplay);
+        
+        // Swipe mobile
+        let startX = 0;
+        let deltaX = 0;
+        let isDragging = false;
+        
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            deltaX = 0;
+            isDragging = true;
+            inner.style.transition = 'none';
+            stopAutoplay();
+        }, { passive: true });
+        
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            deltaX = e.touches[0].clientX - startX;
+            const currentTransform = -(index * 100);
+            const newTransform = currentTransform + (deltaX / track.clientWidth) * 100;
+            inner.style.transform = `translateX(${newTransform}%)`;
+        }, { passive: true });
+        
+        track.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            inner.style.transition = '';
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX < 0) goNext();
+                else goPrev();
+            } else {
+                moveToIndex();
+            }
+            setTimeout(startAutoplay, 2000); // Reinicia após 2s
+        }, { passive: true });
+        
+        // Resize
+        window.addEventListener('resize', () => {
+            const currentPageStart = index * itemsPerView;
+            updateItemsPerView();
+            index = Math.floor(currentPageStart / itemsPerView);
+            const pages = Math.ceil(items.length / itemsPerView);
+            if (index >= pages) index = Math.max(0, pages - 1);
+            updateDots();
+            moveToIndex();
+        });
+        
+        // Init
+        updateItemsPerView();
+        updateDots();
+        moveToIndex();
+        startAutoplay();
+    })();
+
+    // ============================================
+    // CARROSSEL PROVAS REAIS DE TRANSFORMAÇÃO - CARD ÚNICO
+    // ============================================
+    (function initProvasSingleCard() {
+        const wrapper = document.querySelector('.provas-single-card-wrapper');
+        if (!wrapper) return;
+        
+        const images = Array.from(wrapper.querySelectorAll('.provas-image'));
+        const dotsContainer = wrapper.querySelector('.provas-carousel-dots');
+        const autoplay = wrapper.getAttribute('data-autoplay') === 'true';
+        const autoplayInterval = parseInt(wrapper.getAttribute('data-autoplay-interval')) || 4500;
+        
+        if (!images.length) return;
+        
+        let currentIndex = 0;
+        let autoTimer = null;
+        let isTransitioning = false;
+        
+        const showImage = (index) => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            // Remove active de todas as imagens
+            images.forEach(img => {
+                img.classList.remove('active');
+                img.style.position = 'absolute';
+                img.style.pointerEvents = 'none';
+            });
+            
+            // Adiciona active na imagem atual
+            const activeImage = images[index];
+            activeImage.classList.add('active');
+            activeImage.style.position = 'relative';
+            activeImage.style.pointerEvents = 'auto';
+            
+            // Atualiza dots
+            updateDots();
+            
+            // Permite próxima transição após animação
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 1000);
+        };
+        
+        const goNext = () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        };
+        
+        const goToIndex = (index) => {
+            if (index >= 0 && index < images.length) {
+                currentIndex = index;
+                showImage(currentIndex);
+            }
+        };
+        
+        const updateDots = () => {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            images.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'provas-carousel-dot' + (i === currentIndex ? ' active' : '');
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', `Ir para depoimento ${i + 1}`);
+                dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+                dot.addEventListener('click', () => {
+                    goToIndex(i);
+                    restartAutoplay();
+                });
+                dotsContainer.appendChild(dot);
+            });
+        };
+        
+        const startAutoplay = () => {
+            if (!autoplay) return;
+            stopAutoplay();
+            autoTimer = setInterval(goNext, autoplayInterval);
+        };
+        
+        const stopAutoplay = () => {
+            if (autoTimer) {
+                clearInterval(autoTimer);
+                autoTimer = null;
+            }
+        };
+        
+        const restartAutoplay = () => {
+            stopAutoplay();
+            setTimeout(startAutoplay, autoplayInterval);
+        };
+        
+        // Inicialização
+        showImage(0);
+        startAutoplay();
+    })();
+
+    // ============================================
     // 21e. FEEDBACKS EM MOVIMENTO - PAUSAR AO CLICAR
     // ============================================
     (function initDepoimentosPrintsPause(){
