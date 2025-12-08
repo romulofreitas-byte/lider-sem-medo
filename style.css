@@ -6888,4 +6888,160 @@ body {
     }
 }
 
+/* ============================================
+   PÁGINA DE OBRIGADO - ESTILOS ADICIONAIS
+   ============================================ */
+
+/* Seção de informações do workshop */
+.workshop-info-section {
+    padding: 40px 20px;
+    background: linear-gradient(180deg, #F2E7DA 0%, #E9DCCC 100%);
+}
+
+.workshop-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Container dos botões de ação */
+.workshop-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+/* Botão Google Meet (primário) */
+.btn-google-meet {
+    background: linear-gradient(135deg, #4285F4 0%, #357AE8 100%);
+    color: #ffffff;
+    border: 1px solid rgba(66, 133, 244, 0.35);
+    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.25), 0 0 18px rgba(66, 133, 244, 0.15);
+}
+
+.btn-google-meet:hover {
+    background: linear-gradient(135deg, #357AE8 0%, #2B6CD6 100%);
+    box-shadow: 0 12px 32px rgba(66, 133, 244, 0.35), 0 0 22px rgba(66, 133, 244, 0.25);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn-google-meet .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-google-meet .btn-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Botão Google Calendar (secundário) */
+.btn-calendar {
+    background: rgba(255, 255, 255, 0.9);
+    color: #4a3424;
+    border: 1px solid rgba(129, 84, 51, 0.25);
+    box-shadow: 0 4px 16px rgba(129, 84, 51, 0.15), 0 0 12px rgba(191, 165, 132, 0.1);
+}
+
+.btn-calendar:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(129, 84, 51, 0.35);
+    box-shadow: 0 6px 24px rgba(129, 84, 51, 0.2), 0 0 18px rgba(191, 165, 132, 0.15);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn-calendar .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background: rgba(129, 84, 51, 0.1);
+}
+
+.btn-calendar .btn-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+/* Subtítulo da seção */
+.ty-section-subtitle {
+    text-align: center;
+    font-size: clamp(16px, 2.2vw, 18px);
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Ajustes de espaçamento para seção de badges */
+.ty-badges {
+    padding: 50px 20px;
+    background: linear-gradient(180deg, #E9DCCC 0%, #F2E7DA 100%);
+}
+
+/* Responsividade para página de obrigado */
+@media (max-width: 768px) {
+    .workshop-info-section {
+        padding: 30px 16px;
+    }
+    
+    .workshop-actions {
+        gap: 12px;
+        margin-top: 24px;
+    }
+    
+    .workshop-actions .btn-primary,
+    .workshop-actions .btn-secondary {
+        width: 100%;
+        padding: 16px 24px;
+        font-size: 16px;
+    }
+    
+    .ty-badges {
+        padding: 40px 16px;
+    }
+    
+    .ty-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .ty-section-subtitle {
+        margin-bottom: 24px;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .workshop-info-section {
+        padding: 24px 12px;
+    }
+    
+    .ty-badges-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .ty-badge {
+        padding: 12px 14px;
+    }
+    
+    .ty-badge-text {
+        font-size: 14px;
+    }
+}
+
 
