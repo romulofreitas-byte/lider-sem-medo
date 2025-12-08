@@ -4772,8 +4772,9 @@ body {
 
 .aula-cta {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     margin-top: var(--spacing-md);
     position: relative;
     z-index: 2;
@@ -4783,6 +4784,8 @@ body {
 .aula-cta .cta-note {
     color: var(--text-secondary);
     font-size: 13px;
+    text-align: center;
+    width: 100%;
 }
 
 .sobre-aula-col.showcase {
@@ -5141,6 +5144,41 @@ body {
     cursor: pointer;
     transform-style: preserve-3d;
     perspective: 1000px;
+    /* Remover estilos do card externo - manter apenas estrutura */
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Remover background do card externo transformation-card para mentores */
+.mentor-card.transformation-card {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+.mentor-card.transformation-card::before {
+    display: none !important;
+}
+
+/* Remover efeitos hover do card externo para mentores */
+.mentor-card.transformation-card:hover {
+    transform: none !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Esconder ícone do card externo */
+.mentor-card .transformation-icon-wrapper {
+    display: none !important;
+}
+
+/* Esconder background do card externo */
+.mentor-card-bg {
+    display: none !important;
 }
 
 .mentor-card-inner {
@@ -5158,6 +5196,7 @@ body {
     transform: translateY(0) rotateX(0) rotateY(0);
     overflow: hidden;
     z-index: 2;
+    width: 100%;
 }
 
 .mentor-card:hover .mentor-card-inner,
@@ -5174,26 +5213,6 @@ body {
 /* Se não tiver magnetic active, aplicar transform padrão */
 .mentor-card:hover:not(.magnetic-active) .mentor-card-inner {
     transform: translateY(-8px) rotateX(2deg);
-}
-
-.mentor-card-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(129, 84, 51, 0.1) 0%, rgba(150, 122, 98, 0.08) 50%, var(--caramel-neon-light) 100%);
-    border-radius: var(--radius-xl);
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: blur(20px);
-    z-index: 1;
-}
-
-.mentor-card:hover .mentor-card-bg {
-    opacity: 1;
-    transform: scale(1.05);
 }
 
 /* Foto do Mentor */
@@ -6236,11 +6255,18 @@ body {
 .btn-premium-cta {
     width: 100%;
     padding: 1.125rem 2.5rem;
-    font-size: clamp(16px, 1.8vw, 18px);
+    font-size: clamp(15px, 1.6vw, 17px);
     font-weight: 700;
     box-shadow: 0 8px 24px rgba(129, 84, 51, 0.25);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     letter-spacing: 0.03em;
+    text-align: center;
+}
+
+.btn-premium-cta .btn-content {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
 
 .btn-premium-cta:hover {
@@ -6375,6 +6401,8 @@ body {
         background-color: transparent !important;
         justify-content: flex-end;
         align-items: center;
+        position: relative;
+        z-index: 1;
     }
     
     /* Garantir que o background seja visível mesmo com elementos sobrepostos */
@@ -6383,6 +6411,19 @@ body {
         background-size: cover !important;
         background-position: center -60px !important;
         background-repeat: no-repeat !important;
+    }
+    
+    /* Garantir que elementos filhos não cubram o background */
+    .hero .container {
+        background: transparent !important;
+    }
+    
+    .hero-grid {
+        background: transparent !important;
+    }
+    
+    .hero-content {
+        background: transparent !important;
     }
     
     .hero-subtitle {
