@@ -9,6 +9,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/thankyou",
+      "destination": "/api/thankyou"
+    },
+    {
       "source": "/privacidade",
       "destination": "/privacidade.html"
     },
