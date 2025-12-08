@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Atualize aqui quando necessário
     // ============================================
     window.EVENT_DATE = window.EVENT_DATE || '11 Dez 2025';
-    window.EVENT_TIME = window.EVENT_TIME || '12:15';
+    window.EVENT_TIME = window.EVENT_TIME || '20h';
     const syncEventDateTime = () => {
         const headerDate = document.querySelector('.header-date');
         const headerTime = document.querySelector('.header-time');
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         function parsePtBrDate(s){
             try{
-                // Ex.: "02 Dez 2025 12:15"
+                // Ex.: "11 Dez 2025 20h"
                 const parts = s.split(/\s+/);
                 if (parts.length < 4) return null;
                 const [dd, mon, yyyy, hm] = parts;
@@ -753,33 +753,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Atualizar contador a cada 5-8 segundos
     setInterval(updateOnlineCounter, 5000 + Math.random() * 3000);
-    
-    // ============================================
-    // 17. FAQ INTERATIVO
-    // ============================================
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        if (question) {
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Fechar todos os outros
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle do item atual
-                if (isActive) {
-                    item.classList.remove('active');
-                } else {
-                    item.classList.add('active');
-                }
-            });
-        }
-    });
     
     // ============================================
     // 18. CARDS DE MENTORES - INTERATIVIDADE PREMIUM
