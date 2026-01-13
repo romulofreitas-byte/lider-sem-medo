@@ -526,17 +526,16 @@ body {
 /* ============================================
    BACKGROUND FUTURISTA
    ============================================ */
+/* Background Animated - REMOVIDO PARA NÃO SOBREPOR O HERO */
 .background-animated {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-    background: var(--gradient-primary);
-    opacity: 0.98;
+    display: none !important;
+}
+
+/* Garantir que o hero não tenha overlay de cor */
+section.hero::before,
+section.hero::after {
+    display: none !important;
+    content: none !important;
 }
 
 /* No mobile, garantir que o hero fique acima do background-animated */
@@ -551,16 +550,9 @@ body {
     }
 }
 
-/* Canvas para Partículas - Premium Interativo */
+/* Canvas para Partículas - Premium Interativo - DESABILITADO NO HERO */
 #particles-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.15;
-    display: block;
-    z-index: 1;
+    display: none !important;
 }
 
 /* Reduzir opacidade do background em seções de texto */
@@ -570,22 +562,9 @@ body {
     opacity: 0.2;
 }
 
-/* Mesh Gradient Animado - Premium High Ticket */
+/* Mesh Gradient Animado - Premium High Ticket - DESABILITADO NO HERO */
 .mesh-gradient {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(129, 84, 51, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(190, 165, 135, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(150, 122, 98, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 30% 70%, rgba(129, 84, 51, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(190, 165, 135, 0.05) 0%, transparent 50%);
-    animation: meshMove 25s ease-in-out infinite;
-    filter: blur(80px);
-    z-index: 1;
+    display: none !important;
 }
 
 @keyframes meshMove {
@@ -603,28 +582,9 @@ body {
     }
 }
 
-/* Grid Holográfico 3D - Premium */
+/* Grid Holográfico 3D - Premium - DESABILITADO NO HERO */
 .holographic-grid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(129, 84, 51, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(129, 84, 51, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: 
-        radial-gradient(ellipse at center, transparent 30%, black 70%),
-        linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
-    -webkit-mask-image: 
-        radial-gradient(ellipse at center, transparent 30%, black 70%),
-        linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
-    opacity: 0.5;
-    animation: gridPulse 6s ease-in-out infinite;
-    z-index: 1;
-    transform: perspective(1000px) rotateX(60deg);
-    transform-style: preserve-3d;
+    display: none !important;
 }
 
 @keyframes gridPulse {
@@ -638,13 +598,9 @@ body {
     }
 }
 
-/* Orbs Flutuantes - Premium Interativo */
+/* Orbs Flutuantes - Premium Interativo - DESABILITADO NO HERO */
 .floating-orbs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
+    display: none !important;
 }
 
 .orb {
@@ -1038,6 +994,65 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    /* Garantir que nenhum overlay cubra o background */
+    background-color: transparent !important;
+}
+
+/* Remover qualquer overlay de cor do hero */
+.hero::before,
+.hero::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* Desabilitar elementos interativos no hero */
+.hero #particles-canvas,
+.hero .mesh-gradient,
+.hero .holographic-grid,
+.hero .floating-orbs,
+.hero .background-animated {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Desabilitar efeito pulse no hero e seus elementos filhos */
+.hero,
+.hero *,
+.hero *::before,
+.hero *::after,
+.hero .animate-pulse,
+.hero .animate-pulse-glow,
+.hero [class*="pulse"],
+section.hero,
+section.hero *,
+section.hero *::before,
+section.hero *::after,
+section.hero .hero-content,
+section.hero .hero-title,
+section.hero .hero-subtitle,
+section.hero .hero-cta-section,
+section.hero .hero-urgency,
+section.hero .progress-bar-container,
+section.hero .progress-bar-fill,
+section.hero .progress-bar-fill::after,
+section.hero .progress-bar-fill::before,
+section.hero .btn-primary-hero,
+section.hero .btn-primary-hero::before,
+section.hero .btn-primary-hero::after {
+    animation: none !important;
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+}
+
+/* Especificamente remover animações pulse de elementos dentro do hero */
+.hero .progress-bar-fill::after,
+.hero .progress-bar-fill::before,
+.hero .btn-primary-hero::after,
+.hero .btn-primary-hero::before {
+    animation: none !important;
+    -webkit-animation: none !important;
 }
 
 .hero .container {
@@ -3773,7 +3788,7 @@ body {
     background: rgba(150, 122, 98, 0.05);
     z-index: 0;
     pointer-events: none;
-    clip-path: polygon(38% 0, 100% 0, 100% 100%, 38% 100%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 15% 100%);
     transition: clip-path 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 

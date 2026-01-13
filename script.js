@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // EVENTO: Data/Hora (fonte única)
     // Atualize aqui quando necessário
     // ============================================
-    window.EVENT_DATE = window.EVENT_DATE || '11 Dez 2025';
+    window.EVENT_DATE = window.EVENT_DATE || '15 Jan 2026';
     window.EVENT_TIME = window.EVENT_TIME || '20h';
     const syncEventDateTime = () => {
         const headerDate = document.querySelector('.header-date');
@@ -115,130 +115,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ============================================
-    // 1. SISTEMA DE PARTÍCULAS INTERATIVO
+    // 1. SISTEMA DE PARTÍCULAS INTERATIVO - DESABILITADO NO HERO
     // ============================================
+    // Partículas desabilitadas para não sobrepor o background do hero
     const canvas = document.getElementById('particles-canvas');
-    let mouseX = 0, mouseY = 0;
-    
     if (canvas) {
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        canvas.style.display = 'block';
-        
-        // Atualizar posição do mouse (desktop) ou touch (mobile)
-        const updateMousePos = (e) => {
-            if (e.touches) {
-                mouseX = e.touches[0].clientX;
-                mouseY = e.touches[0].clientY;
-            } else {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            }
-        };
-        
-        document.addEventListener('mousemove', updateMousePos);
-        document.addEventListener('touchmove', updateMousePos);
-        
-        // Paleta Marrom/Caramelo
-        const colors = [
-            'rgba(129, 84, 51, 0.40)',  // Marrom médio forte
-            'rgba(129, 84, 51, 0.28)',  // Marrom médio
-            'rgba(190, 165, 135, 0.26)',// Caramelo suave
-            'rgba(226, 216, 204, 0.22)' // Bege sutil
-        ];
-        
-        class Particle {
-            constructor() {
-                this.reset();
-                this.y = Math.random() * canvas.height;
-            }
-            
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-            
-            update(mouseX, mouseY) {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                // Interação com mouse
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 100) {
-                    const force = (100 - distance) / 100;
-                    this.x -= (dx / distance) * force * 2;
-                    this.y -= (dy / distance) * force * 2;
-                }
-                
-                // Reset se sair da tela
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-            
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.opacity;
-                ctx.fill();
-            }
+        canvas.style.display = 'none';
+        canvas.style.visibility = 'hidden';
+        canvas.style.opacity = '0';
+        // Parar qualquer animação
+        if (canvas.animationId) {
+            cancelAnimationFrame(canvas.animationId);
         }
-        
-        const particles = [];
-        const particleCount = window.innerWidth < 768 ? 40 : 120;
-        
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-        
-        let animationId;
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update(mouseX, mouseY);
-                particle.draw();
-            });
-            
-            // Conectar partículas próximas - Premium High Ticket
-            particles.forEach((particle, i) => {
-                particles.slice(i + 1).forEach(otherParticle => {
-                    const dx = particle.x - otherParticle.x;
-                    const dy = particle.y - otherParticle.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        const alpha = 0.18 * (1 - distance / 150);
-                        ctx.strokeStyle = `rgba(129, 84, 51, ${alpha})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particle.x, particle.y);
-                        ctx.lineTo(otherParticle.x, otherParticle.y);
-                        ctx.stroke();
-                    }
-                });
-            });
-            
-            animationId = requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        // Resize handler
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     }
+    
+    /* CÓDIGO DESABILITADO - EFEITOS INTERATIVOS REMOVIDOS DO HERO
+    Sistema de partículas desabilitado para não sobrepor o background do hero.
+    Todo o código de partículas foi removido.
+    */
     
     // ============================================
     // 3. MAGNETIC BUTTONS
@@ -274,20 +168,24 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Removido parallax do hero para evitar sobreposição com rolling banner
         
-        // Orbs parallax (apenas background, não interfere no layout)
+        // Orbs parallax - DESABILITADO (efeitos interativos removidos do hero)
+        /* 
         const orbs = document.querySelectorAll('.orb');
         orbs.forEach((orb, index) => {
             const speed = (index + 1) * 0.1;
             const parallaxValue = scrolled * speed;
             orb.style.transform = `translateY(${parallaxValue}px)`;
         });
+        */
         
-        // Mesh gradient parallax (apenas background, não interfere no layout)
+        // Mesh gradient parallax - DESABILITADO (efeitos interativos removidos do hero)
+        /*
         const meshGradient = document.querySelector('.mesh-gradient');
         if (meshGradient) {
             const parallaxValue = scrolled * 0.15;
             meshGradient.style.transform = `translateY(${parallaxValue}px)`;
         }
+        */
         
         ticking = false;
     }
@@ -376,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         function parsePtBrDate(s){
             try{
-                // Ex.: "11 Dez 2025 20h"
+                // Ex.: "15 Jan 2026 20h"
                 const parts = s.split(/\s+/);
                 if (parts.length < 4) return null;
                 const [dd, mon, yyyy, hm] = parts;
@@ -530,18 +428,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Animação inicial de preenchimento - mais rápida
         setTimeout(() => {
-            progressBar.style.width = '38%';
-            // Parte transparente começa onde o preenchimento marrom termina (38%)
+            progressBar.style.width = '15%';
+            // Parte transparente começa onde o preenchimento marrom termina (15%)
             if (progressUnfilled) {
-                progressUnfilled.style.clipPath = 'polygon(38% 0, 100% 0, 100% 100%, 38% 100%)';
+                progressUnfilled.style.clipPath = 'polygon(15% 0, 100% 0, 100% 100%, 15% 100%)';
             }
         }, 200);
         
         // Efeito de preenchimento constante (muito menos frequente para melhor performance)
-        let progressValue = 38;
+        let progressValue = 15;
         setInterval(() => {
             const variation = Math.sin(Date.now() / 6000) * 0.2; // variação menor e menos agressiva
-            const currentWidth = 38 + variation;
+            const currentWidth = 15 + variation;
             progressBar.style.width = `${currentWidth}%`;
             // Garantir que a largura do container não mude
             syncProgressBarWidth();
