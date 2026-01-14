@@ -1055,6 +1055,15 @@ section.hero .btn-primary-hero::after {
     -webkit-animation: none !important;
 }
 
+/* Permitir animações de entrada no hero (sobrescreve a regra anterior) */
+.hero [data-animate].animated,
+section.hero [data-animate].animated {
+    animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    -webkit-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    -moz-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    -o-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
 .hero .container {
     width: 100%;
     display: flex;
